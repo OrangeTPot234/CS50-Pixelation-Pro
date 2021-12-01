@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Password
+{% endblock %}
+
+{% block main %}
+    <form action="/settings" method="post">
+        <h4><b>Change Password</b></h4>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="password" name="curr_pass" placeholder="Current Password" type="password">
+        </div>
+            <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="password" name="new_pass" placeholder="New Password" type="password">
+        </div>
+            <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="password" name="redo_new_pass" placeholder="Re-enter New Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Change Password</button>
+    </form>
+    {% if screenload == 1 %}
+    <br>
+    <br>
+    <h4><i>Password Successfully Changed</i></h4>
+    {% endif %}
+    
+{% endblock %}

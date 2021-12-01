@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+    <form action="/" method="post">
+        <h4>Welcome, {{ username }}</h4>
+
+        <h5> Current Stocks </h5>
+        <br>
+        <div style="padding-left: 2em; padding-right: 2em;">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Company</th> 
+                        <th>Shares</th>
+                        <th>Current Value</th>
+                        <th>Total Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if screenload == 1 %}
+                    {% for row in stocks_owned %}
+                    <tr>
+                        <td>{{ row["ticker"] }}</td>
+                        <td>{{ row["name"] }}</td> 
+                        <td>{{ row["shares"] }}</td>
+                        <td>{{ row["value"] }}</td>
+                        <td>{{ row["total_value"] }}</td>
+                    {% endfor %}
+                    {% endif %}
+                    </tr>
+                    <tr style="border-top: 2px dashed; ">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align: right;"><b>Cash Remaining</b></td>
+                        <td><b>{{ cash_remaining }}</b></td>
+                    </tr>
+                    <tr style="border-bottom: 2px solid;">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align: right;"><b>TOTAL VALUE</b></td>
+                        <td><b>{{ cummulative_value }}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% if screenload == 0 %}
+        <br>
+        <br>
+        <h5><i>No Stocks Owned At The Moment</i></h5>
+        {% endif %}
+    </div>
+    
+{% endblock %}
