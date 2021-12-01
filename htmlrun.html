@@ -16,7 +16,7 @@
 
         <link href="/static/styles.css" rel="stylesheet">
 
-        <title>C$50 Finance: {% block title %}{% endblock %}</title>
+        <title>C$50 Finance: Log In </title>
 
     </head>
 
@@ -29,7 +29,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbar">
-                    {% if session["user_id"] %}
+                    
                         <ul class="navbar-nav me-auto mt-2">
                             <li class="nav-item"><a class="nav-link" href="/quote">Quote</a></li>
                             <li class="nav-item"><a class="nav-link" href="/buy">Buy</a></li>
@@ -40,26 +40,27 @@
                         <ul class="navbar-nav ms-auto mt-2">
                             <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
                         </ul>
-                    {% else %}
+                    
                         <ul class="navbar-nav ms-auto mt-2">
                             <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
                             <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
                         </ul>
-                    {% endif %}
+                    
                 </div>
             </div>
         </nav>
-
-        {% if get_flashed_messages() %}
-            <header>
-                <div class="alert alert-primary mb-0 text-center" role="alert">
-                    {{ get_flashed_messages() | join(" ") }}
-                </div>
-            </header>
-        {% endif %}
+        
 
         <main class="container-fluid py-5 text-center">
-            {% block main %}{% endblock %}Z
+            <form action="/login" method="post">
+                <div class="mb-3">
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
+                </div>
+                <div class="mb-3">
+                    <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+                </div>
+                <button class="btn btn-primary" type="submit">Log In</button>
+            </form>
         </main>
 
         <footer class="mb-5 small text-center text-muted">
