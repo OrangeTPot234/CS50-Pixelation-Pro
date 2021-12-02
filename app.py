@@ -47,10 +47,9 @@ def index():
     galleries = db.execute("SELECT * FROM galleries WHERE user_id = ?", session["user_id"])
 
     # If user does not own any stocks load page with special note
-    if not stock_info:
+    if not galleries:
         screenload = 0
-        cummulative_value = cash_remaining
-        return render_template("index.html", username=username, cash_remaining=cash_remaining, screenload=screenload, cummulative_value=cummulative_value)
+        return render_template("index.html", username=username, screenload=screenload)
 
     # Create list to store stock info for webpage
     stocks_owned = []
