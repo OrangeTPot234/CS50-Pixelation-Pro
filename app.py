@@ -43,10 +43,6 @@ def index():
     # Get info on username and cash remaining
     user_info = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
     username = user_info[0]["username"]
-    cash_remaining = usd(float(user_info[0]["cash"]))
-
-    # Get info about stock porfolio info from database
-    stock_info = db.execute("SELECT user_id, stock, SUM(shares) AS total_shares FROM portfolio WHERE user_id = ? GROUP BY stock ORDER BY stock", session["user_id"])
 
     # If user does not own any stocks load page with special note
     if not stock_info:
