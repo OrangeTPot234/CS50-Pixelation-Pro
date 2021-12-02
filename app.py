@@ -51,39 +51,9 @@ def index():
         screenload = 0
         return render_template("index.html", username=username, screenload=screenload)
 
-    # Create list to store stock info for webpage
-    stocks_owned = []
-    cummulative_value = float(user_info[0]["cash"])
-
-    # Get info about each stock and store into dictionary
-    for i in range(len(stock_info)):
-        # Ticker and stock info
-        ticker = stock_info[i]["stock"]
-        total_shares = stock_info[i]["total_shares"]
-
-        # Get current info on stock
-        lookup_results = lookup(ticker)
-        company = lookup_results["name"]
-        current_price = lookup_results["price"]
-        total_value = float(current_price) * float(total_shares)
-
-        # Update total value of all assets
-        cummulative_value += total_value
-
-        # define dictionary that has all values for table for stock
-        stock_details = {}
-        stock_details["ticker"] = ticker
-        stock_details["name"] = company
-        stock_details["shares"] = total_shares
-        stock_details["value"] = usd(current_price)
-        stock_details["total_value"] = usd(total_value)
-
-        # apprend each dictionary into list
-        stocks_owned.append(stock_details)
-
     # load screen and load appropriate variables into HTML
     screenload = 1
-    return render_template("userpage.html", username=username, cash_remaining=cash_remaining, screenload=screenload, stocks_owned=stocks_owned, cummulative_value=usd(cummulative_value))
+    return render_template("index.html", username=username, galleries=galleries, screenload=screenload))
 
 
 @app.route("/login", methods=["GET", "POST"])
