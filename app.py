@@ -150,7 +150,12 @@ def upload():
 @app.route("/gallery", methods=["GET", "POST"])
 @login_required
 def gallery():
-    return render_template("gallery.html")
+
+    if request.form.get("add_gallery"):
+        return redirect("/gallery")
+
+    else:
+        return render_template("gallery.html")
 
 #### ERROR HANDLING ####
 def errorhandler(e):
