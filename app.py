@@ -396,44 +396,7 @@ def sell():
         return render_template("sell.html", tickers=tickers)
 
 
-# Make page for changin passwords
-@app.route("/settings", methods=["GET", "POST"])
-@login_required
-def settings():
-    """Change Password"""
-
-    if request.method == "POST":
-
-        # make sure that password is entered
-        if not request.form.get("curr_pass"):
-            return apology("must provide current password", 403)
-
-        # Ensure that new password fields are entered
-        elif not request.form.get("new_pass") or not request.form.get("redo_new_pass"):
-            return apology("must enter new password", 403)
-
-        # Ensure new password is re-entered correctly
-        elif request.form.get("new_pass") != request.form.get("redo_new_pass"):
-            return apology("please reenter: new passwords do not match", 403)
-
-        # Ensure current password is correct before changing password
-        current_password = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
-        if not check_password_hash(current_password[0]["hash"], request.form.get("curr_pass")):
-            return apology("current password is invalid", 400)
-        
-        # Store new password
-        new_password = generate_password_hash(request.form.get("new_pass"))
-        db.execute("UPDATE users SET hash = ? WHERE id = ?", new_password, session["user_id"])
-
-        # Load page with confirmation that password was updated
-        screenload = 1
-        return render_template("settings.html", screenload=screenload)
-
-    # Load page upon GET request
-    else:
-        return render_template("settings.html")
-
-
+#### ERROR HANDLING ####
 def errorhandler(e):
     """Handle error"""
     if not isinstance(e, HTTPException):
