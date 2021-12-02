@@ -7,16 +7,13 @@ from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, login_required, lookup, usd
+from helpers import apology, login_required
 
 # Configure application
 app = Flask(__name__)
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
-
-# Custom filter
-app.jinja_env.filters["usd"] = usd
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
@@ -53,7 +50,7 @@ def index():
 
     # load screen and load appropriate variables into HTML
     screenload = 1
-    return render_template("index.html", username=username, galleries=galleries, screenload=screenload))
+    return render_template("index.html", username=username, galleries=galleries, screenload=screenload)
 
 
 @app.route("/login", methods=["GET", "POST"])
