@@ -118,7 +118,7 @@ def login():
         session["user_id"] = rows[0]["user_id"]
 
         # Redirect user to home page
-        return redirect("/")
+        return redirect("/homepage")
 
     # User reached route via GET
     else:
