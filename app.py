@@ -43,6 +43,10 @@ def index():
 
     galleries = db.execute("SELECT * FROM galleries WHERE user_id = ?", session["user_id"])
 
+
+    if request.form.get("add_gallery"):
+        return redirect("/gallery")
+
     # If user does not own any stocks load page with special note
     if not galleries:
         screenload = 0
@@ -150,12 +154,7 @@ def upload():
 @app.route("/gallery", methods=["GET", "POST"])
 @login_required
 def gallery():
-
-    if request.form.get("add_gallery"):
-        return redirect("/gallery")
-
-    else:
-        return render_template("gallery.html")
+    return render_template("gallery.html")
 
 #### ERROR HANDLING ####
 def errorhandler(e):
