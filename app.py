@@ -88,7 +88,6 @@ def index():
     screenload = 1
     return render_template("index.html", username=username, cash_remaining=cash_remaining, screenload=screenload, stocks_owned=stocks_owned, cummulative_value=usd(cummulative_value))
 
-#### PAGE CODE ####
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
