@@ -145,6 +145,15 @@ def register():
     else:
         return render_template("register.html")
 
+@app.route("/upload", methods=["GET", "POST"])
+@login_required
+def upload():
+    return render_template("upload.html")
+
+@app.route("/gallery", methods=["GET", "POST"])
+@login_required
+def gallery():
+    return render_template("gallery.html")
 
 #### ERROR HANDLING ####
 def errorhandler(e):
