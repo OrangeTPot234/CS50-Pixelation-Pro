@@ -118,7 +118,7 @@ def login():
         session["user_id"] = rows[0]["user_id"]
 
         # Redirect user to home page
-        return redirect("/userpage")
+        return redirect("/")
 
     # User reached route via GET
     else:
@@ -172,7 +172,7 @@ def register():
         session["user_id"] = user[0]["user_id"]
 
         # Redirect user to home page
-        return redirect("/userpage")
+        return redirect("/")
 
     # load page for register
     else:
