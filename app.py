@@ -118,12 +118,11 @@ def login():
         session["user_id"] = rows[0]["user_id"]
 
         # Redirect user to home page
-        return redirect("/homepage")
+        return redirect("/userpage")
 
     # User reached route via GET
     else:
         return render_template("login.html")
-
 
 @app.route("/logout")
 def logout():
@@ -134,38 +133,6 @@ def logout():
 
     # Redirect user to login form
     return redirect("/")
-
-
-@app.route("/quote", methods=["GET", "POST"])
-@login_required
-def quote():
-    """Get stock quote."""
-    # If user sends post query
-    if request.method == "POST":
-
-        # Ensure user provided form input
-        stock_request = request.form.get("symbol")
-        if not stock_request:
-            return apology("Please Include Stock Ticker")
-
-        # saving search query
-        lookup_results = lookup(stock_request)
-
-        # Determine if stock ticker exists
-        if lookup_results == None:
-            return apology("Stock does not exist")
-
-        # Save and pass search query results into html
-        name = lookup_results["name"]
-        ticker = lookup_results["symbol"]
-        price = lookup_results["price"]
-        return render_template("quote.html", name=name, ticker=ticker, price=price, lookup_results=lookup_results)
-
-    else:
-        # Render quote page without table
-        lookup_results = None
-        return render_template("quote.html", lookup_results=lookup_results)
-
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -202,10 +169,10 @@ def register():
 
         # LOG IN USER: Get user_id and get session_id to log in user
         user = db.execute("SELECT * FROM users WHERE username = ?", input1)
-        session["user_id"] = user[0]["id"]
+        session["user_id"] = user[0]["user_id"]
 
         # Redirect user to home page
-        return redirect("/")
+        return redirect("/userpage")
 
     # load page for register
     else:
