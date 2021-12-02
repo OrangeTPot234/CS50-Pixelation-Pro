@@ -41,8 +41,10 @@ def index():
     """Show portfolio of stocks"""
 
     # Get info on username and cash remaining
-    user_info = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
+    user_info = db.execute("SELECT * FROM users WHERE user_id = ?", session["user_id"])
     username = user_info[0]["username"]
+
+    galleries = db.execute("SELECT * FROM galleries WHERE user_id = ?", session["user_id"])
 
     # If user does not own any stocks load page with special note
     if not stock_info:
