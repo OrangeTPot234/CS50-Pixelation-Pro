@@ -86,7 +86,7 @@ def index():
 
     # load screen and load appropriate variables into HTML
     screenload = 1
-    return render_template("index.html", username=username, cash_remaining=cash_remaining, screenload=screenload, stocks_owned=stocks_owned, cummulative_value=usd(cummulative_value))
+    return render_template("userpage.html", username=username, cash_remaining=cash_remaining, screenload=screenload, stocks_owned=stocks_owned, cummulative_value=usd(cummulative_value))
 
 
 @app.route("/login", methods=["GET", "POST"])
