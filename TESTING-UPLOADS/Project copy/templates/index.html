@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Userpage
+{% endblock %}
+
+{% block main %}
+    <h4>{{ username }}</h4>
+    <a href="/upload">Add Gallery</a>
+
+    <div style="padding-left: 2em; padding-right: 2em;">
+        <table class="table table-hover">
+            <tbody>
+                {% if screenload == 1 %}
+                {% for i in range(len(galleries)) %}
+                <tr>
+                    <td>{{ gallery[i]["gallery_name"] }}</td>
+                {% endfor %}
+                {% endif %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% if screenload == 0 %}
+    <br>
+    <h5><i>No Galleries at Moment</i></h5>
+    {% endif %}
+{% endblock %}
