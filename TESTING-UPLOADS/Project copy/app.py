@@ -165,7 +165,7 @@ def upload():
         f = request.files["photos"]
         f.save(secure_filename(f.filename))
         print("it worked :D")
-        return
+        return redirect("/")
         
     else:
         return render_template("upload.html")
