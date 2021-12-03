@@ -45,7 +45,7 @@ def index():
 
 
     if request.form.get("add_gallery"):
-        return redirect("/gallery")
+        return redirect("/upload")
 
     # If user does not own any stocks load page with special note
     if not galleries:
@@ -149,7 +149,8 @@ def register():
 @app.route("/upload", methods=["GET", "POST"])
 @login_required
 def upload():
-    if method == "POST":
+    print("i'm in upload")
+    if request.method == "POST":
         print("Works")
     else:
         return render_template("upload.html")
@@ -157,7 +158,7 @@ def upload():
 @app.route("/gallery", methods=["GET", "POST"])
 @login_required
 def gallery():
-    return render_template("upload.html")
+    return render_template("gallery.html")
 
 #### ERROR HANDLING ####
 def errorhandler(e):
