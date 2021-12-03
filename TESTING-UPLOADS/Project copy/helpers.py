@@ -33,3 +33,10 @@ def login_required(f):
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
+
+def insert_picture(conn, picture_file):
+    with open(picture_file, 'rb') as input_file:
+        ablob = input_file.read()
+        base=os.path.basename(picture_file)
+        afile, ext = os.path.splitext(base)
+        
