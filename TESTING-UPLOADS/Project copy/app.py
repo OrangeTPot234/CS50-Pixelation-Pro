@@ -151,7 +151,7 @@ def register():
 def upload():
     print("i'm in upload")
     if request.method == "POST":
-        print("Works")
+        photo = request.form.get("Upload")
         
     else:
         return render_template("upload.html")
