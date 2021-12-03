@@ -149,7 +149,10 @@ def register():
 @app.route("/upload", methods=["GET", "POST"])
 @login_required
 def upload():
-    return render_template("upload.html")
+    if method == "POST":
+        print("Works")
+    else:
+        return render_template("upload.html")
 
 @app.route("/gallery", methods=["GET", "POST"])
 @login_required
