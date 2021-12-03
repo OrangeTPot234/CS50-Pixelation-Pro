@@ -152,6 +152,7 @@ def upload():
     print("i'm in upload")
     if request.method == "POST":
         print("Works")
+        
     else:
         return render_template("upload.html")
 
