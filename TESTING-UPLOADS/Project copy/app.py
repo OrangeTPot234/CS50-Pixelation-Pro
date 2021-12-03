@@ -4,6 +4,7 @@ from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
+from werkzeug import secure_filename
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -26,6 +27,9 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+# set file upload path
+app.config["UPLOAD_FOLDER"] = "uploads"
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///databases.db")
@@ -158,10 +162,10 @@ def register():
 def upload():
     print("i'm in upload")
     if request.method == "POST":
-        print(request.form)
-        photo = request.form.get("photos")
-        print(photo)
-        
+        f = request.files["photos"]
+        f.save(secure_filename(f.filename))
+        print("it worked :D")
+        return
         
     else:
         return render_template("upload.html")
