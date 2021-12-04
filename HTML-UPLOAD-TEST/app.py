@@ -2,6 +2,7 @@ from flask import Flask,render_template,request
 from werkzeug.utils import secure_filename
  
 app = Flask(__name__)
+app.config[‘UPLOAD_FOLDER‘] = 
 
 @app.route('/')
 def form():
@@ -14,6 +15,7 @@ def upload():
         screenload = 1
         f = request.files['file']
         f.save(secure_filename(f.filename))
+        print("")
         return render_template('form.html', screenload=screenload)
  
 app.run(host='localhost', port=5000)
