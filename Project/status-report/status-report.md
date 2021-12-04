@@ -1,13 +1,13 @@
 # Status Report
 
-#### Your name
+#### Your name(s)
 
 Tony Potchernikov/Judith Chang
 
 #### Your section leader's name
 
-For Tony:
-For Judith:
+For Tony: Charlie Liu, Allie Liebmann
+For Judith: Kelly Wei & Daphne Zhu
 
 #### Project title
 
