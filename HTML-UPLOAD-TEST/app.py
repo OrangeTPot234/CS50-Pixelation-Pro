@@ -14,7 +14,7 @@ def extract_picture(picture_id):
     photo_data = db.execute("SELECT photo_file, photo_name FROM photos WHERE photo_id = ?", picture_id)    
     blob = photo_data[0]['photo_file']
     f = photo_data[0]['photo_name']
-    filename = f + .png
+    filename = f + '.png'
     with open(filename, 'wb') as output_file:
         output_file.write(blob)
     return filename
@@ -35,6 +35,8 @@ def upload():
         print("f.save worked")
         insert_picture(f.filename.replace(" ", "_"))
         print("Insert Picture Worked")
+        picture = extract_picture(1)
+
         return render_template('form.html', screenload=screenload)
  
 app.run(host='localhost', port=5000)
