@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request
 from werkzeug.utils import secure_filename
 from cs50 import SQL
+import sqlite3
 
 app = Flask(__name__)
 db = SQL("sqlite:///databases.db")
