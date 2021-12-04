@@ -7,6 +7,7 @@ from functools import wraps
 # Reference Websites: https://stackoverflow.com/questions/51301395/how-to-store-a-jpg-in-an-sqlite-database-with-python
 # https://flask.palletsprojects.com/en/2.0.x/patterns/fileuploads/
 # https://www.askpython.com/python-modules/flask/flask-file-uploading 
+# http://www.numericalexpert.com/blog/sqlite_blob_time/ 
 
 def apology(message, code=400):
     """Render message as an apology to user."""
