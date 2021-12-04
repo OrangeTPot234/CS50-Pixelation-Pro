@@ -14,7 +14,7 @@ def insert_picture(picture_file):
         #sql = '''INSERT INTO PICTURES
         #(PICTURE, TYPE, FILE_NAME)
         #VALUES(?, ?, ?);'''
-        db.execute("INSERT INTO photos (gallery_id, photo_name, photo_file) VALUES (?, ?, ?)", 1, "photo", sqlite3.Binary(blob))
+        db.execute("INSERT INTO photos (gallery_id, photo_name, photo_file) VALUES (?, ?, ?)", 1, "photo", blob)
         #db.execute(sql,[sqlite3.Binary(ablob), ext, afile]) 
 
 @app.route('/')
