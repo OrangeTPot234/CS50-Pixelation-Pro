@@ -1,8 +1,13 @@
 <DOCTYPE! html>
    <body>
+      {% if screenload == 0 %}
       <form action = "http://localhost:5000/endpoint" method = "POST" enctype = "multipart/form-data">
          <input type = "file" name = "file" />
          <input type = "submit" value = "Submit" />
       </form>
+      {% if screenload == 1 %}
+      <br>
+      <h5><i>File Uploaded</i></h5>
+      {% endif %}
    </body>
 </html>
