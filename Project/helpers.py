@@ -1,10 +1,11 @@
 import os
 import requests
 import urllib.parse
-
 from flask import redirect, render_template, request, session
 from functools import wraps
-
+# Reference Websites: https://stackoverflow.com/questions/51301395/how-to-store-a-jpg-in-an-sqlite-database-with-python
+# https://flask.palletsprojects.com/en/2.0.x/patterns/fileuploads/
+# https://www.askpython.com/python-modules/flask/flask-file-uploading 
 
 def apology(message, code=400):
     """Render message as an apology to user."""
@@ -33,3 +34,8 @@ def login_required(f):
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
+
+def insert_picture(picture_file, photo_name, gallery_id):
+    with open(picture_file, 'rb') as input_file:
+        blob = input_file.read()
+        db.execute("INSERT INTO photos (gallery_id, photo_name, photo_file) VALUES (?, ?, ?)", gallery_id, photo_name, blob)
