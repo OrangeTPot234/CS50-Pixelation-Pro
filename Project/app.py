@@ -168,7 +168,8 @@ def upload():
 @login_required
 def gallery():
     gallery_id = request.args.get("g")
-    return render_template("gallery.html")
+    gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
+    return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'])
 
 #### ERROR HANDLING ####
 def errorhandler(e):
