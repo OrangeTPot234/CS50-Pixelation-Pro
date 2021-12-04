@@ -8,13 +8,13 @@ db = SQL("sqlite:///databases.db")
 
 def insert_picture(picture_file):
     with open(picture_file, 'rb') as input_file:
-        ablob = input_file.read()
+        blob = input_file.read()
         #base=os.path.basename(picture_file)
         #afile, ext = os.path.splitext(base)
         #sql = '''INSERT INTO PICTURES
         #(PICTURE, TYPE, FILE_NAME)
         #VALUES(?, ?, ?);'''
-        db.execute("INSERT INTO photos (gallery_id, photo_name, photo_file) VALUES (?, ?, ?)", 1, "photo", sqlite3.Binary(ablob))
+        db.execute("INSERT INTO photos (gallery_id, photo_name, photo_file) VALUES (?, ?, ?)", 1, "photo", sqlite3.Binary(blob))
         #db.execute(sql,[sqlite3.Binary(ablob), ext, afile]) 
 
 @app.route('/')
