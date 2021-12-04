@@ -36,7 +36,6 @@ def upload():
         insert_picture(f.filename.replace(" ", "_"))
         print("Insert Picture Worked")
         picture = extract_picture(1)
-
-        return render_template('form.html', screenload=screenload)
+        return render_template('form.html', screenload=screenload, picture=picture)
  
 app.run(host='localhost', port=5000)
