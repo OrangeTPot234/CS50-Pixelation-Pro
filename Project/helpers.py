@@ -1,6 +1,7 @@
 import os
 import requests
 import urllib.parse
+from cs50 import SQL
 from flask import redirect, render_template, request, session
 from functools import wraps
 # Reference Websites: https://stackoverflow.com/questions/51301395/how-to-store-a-jpg-in-an-sqlite-database-with-python
@@ -34,6 +35,8 @@ def login_required(f):
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
+
+db = SQL("sqlite:///databases.db")
 
 def insert_picture(picture_file, photo_name, gallery_id):
     with open(picture_file, 'rb') as input_file:
