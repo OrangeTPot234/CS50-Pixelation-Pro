@@ -150,7 +150,7 @@ def register():
 def upload():
     print("i'm in upload")
     if request.method == "POST":
-        
+        db.execute("INSERT INTO ")
         
     else:
         return render_template("upload.html")
