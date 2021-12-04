@@ -14,7 +14,7 @@
                 {% if screenload == 1 %}
                 {% for i in galleries %}
                 <tr>
-                    <td>{{ i }}</td>
+                    <td>{{ i["gallery_name"] }}</td>
                 {% endfor %}
                 {% endif %}
                 </tr>
