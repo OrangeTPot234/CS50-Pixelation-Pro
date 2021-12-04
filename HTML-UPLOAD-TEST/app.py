@@ -11,14 +11,12 @@ def insert_picture(picture_file):
         db.execute("INSERT INTO photos (gallery_id, photo_name, photo_file) VALUES (?, ?, ?)", 1, "photo", blob)
 
 def extract_picture(picture_id):
-    db.execute("SELECT photo, photo_name FROM photos WHERE photo_id = ?", picture_id)    
-    sql = "SELECT PICTURE, TYPE, FILE_NAME FROM PICTURES WHERE id = :id"
-    param = {'id': picture_id}
-    cursor.execute(sql, param)
-    ablob, ext, afile = cursor.fetchone()
-    filename = afile + ext
+    photo_data = db.execute("SELECT photo_file, photo_name FROM photos WHERE photo_id = ?", picture_id)    
+    blob = photo_data[0]['photo_file']
+    f = photo_data[0]['photo_name']
+    filename = f + .png
     with open(filename, 'wb') as output_file:
-        output_file.write(ablob)
+        output_file.write(blob)
     return filename
 
 
