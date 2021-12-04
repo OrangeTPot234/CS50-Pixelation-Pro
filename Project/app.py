@@ -159,6 +159,7 @@ def upload():
         print("f.save worked")
         insert_picture(f.filename.replace(" ", "_"), photo_name, gallery_id)
         print("Insert Picture Worked")
+        os.delete(f.filename)
         return redirect("/")
     else:
         return render_template("upload.html")
