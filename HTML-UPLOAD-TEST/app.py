@@ -2,7 +2,16 @@ from flask import Flask,render_template,request
 from werkzeug.utils import secure_filename
  
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = "/Files"
+
+def insert_picture(conn, picture_file):
+    with open(picture_file, 'rb') as input_file:
+        ablob = input_file.read()
+        base=os.path.basename(picture_file)
+        afile, ext = os.path.splitext(base)
+        sql = '''INSERT INTO PICTURES
+        (PICTURE, TYPE, FILE_NAME)
+        VALUES(?, ?, ?);'''
+        conn.execute(sql,[sqlite3.Binary(ablob), ext, afile]) 
 
 @app.route('/')
 def form():
