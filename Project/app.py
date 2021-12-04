@@ -31,31 +31,6 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-
-@app.route("/")
-@login_required
-def index():
-    """Show portfolio of stocks"""
-
-    # Get info on username and cash remaining
-    user_info = db.execute("SELECT * FROM users WHERE user_id = ?", session["user_id"])
-    username = user_info[0]["username"]
-
-    galleries = db.execute("SELECT * FROM galleries WHERE user_id = ?", session["user_id"])
-
-    if request.form.get("add_gallery"):
-        return redirect("/upload")
-
-    # If user does not own any stocks load page with special note
-    if not galleries:
-        screenload = 0
-        return render_template("index.html", username=username, screenload=screenload)
-
-    # load screen and load appropriate variables into HTML
-    screenload = 1
-    return render_template("index.html", username=username, galleries=galleries, screenload=screenload)
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
@@ -145,6 +120,46 @@ def register():
     else:
         return render_template("register.html")
 
+
+
+
+
+
+
+
+#### GALLERY PAGES ####
+
+
+
+
+
+
+
+
+@app.route("/")
+@login_required
+def index():
+    """Show portfolio of stocks"""
+
+    # Get info on username and cash remaining
+    user_info = db.execute("SELECT * FROM users WHERE user_id = ?", session["user_id"])
+    username = user_info[0]["username"]
+
+    galleries = db.execute("SELECT * FROM galleries WHERE user_id = ?", session["user_id"])
+
+    if request.form.get("add_gallery"):
+        return redirect("/upload")
+
+    # If user does not own any stocks load page with special note
+    if not galleries:
+        screenload = 0
+        return render_template("index.html", username=username, screenload=screenload)
+
+    # load screen and load appropriate variables into HTML
+    screenload = 1
+    return render_template("index.html", username=username, galleries=galleries, screenload=screenload)
+
+
 @app.route("/upload", methods=["GET", "POST"])
 @login_required
 def upload():
@@ -171,7 +186,24 @@ def gallery():
     gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
     return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'])
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### ERROR HANDLING ####
+
+
+
 def errorhandler(e):
     """Handle error"""
     if not isinstance(e, HTTPException):
