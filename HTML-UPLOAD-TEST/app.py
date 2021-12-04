@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
  
 app = Flask(__name__)
 
-@app.route('/form')
+@app.route('/')
 def form():
     screenload = 0
     return render_template('form.html', screenload=screenload)
