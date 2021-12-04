@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request, url_for
 from werkzeug.utils import secure_filename
 from cs50 import SQL
 
@@ -17,7 +17,7 @@ def extract_picture(picture_id):
     filename = f + '.jpg'
     with open(filename, 'wb') as output_file:
         output_file.write(blob)
-        
+
     return filename
 
 
