@@ -150,7 +150,16 @@ def register():
 def upload():
     print("i'm in upload")
     if request.method == "POST":
-        db.execute("INSERT INTO ")
+        gallery_title = request.form.get("gallery_title")
+        db.execute("INSERT INTO galleries (user_id, gallery_name) VALUES (?, ?)", session["user_id"], gallery_title)
+        gallery_id = db.execute("SELECT gallery_id FROM galleries WHERE user_id = ? AND gallery_name = ?", session["user_id"], gallery_title)
+        photo_name = request.form.get("photo_name")
+        f = request.files['photo']
+        f.save(secure_filename(f.filename))
+        print("f.save worked")
+        insert_picture(f.filename.replace(" ", "_"))
+        print("Insert Picture Worked")
+
         
     else:
         return render_template("upload.html")
