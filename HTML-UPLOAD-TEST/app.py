@@ -29,7 +29,7 @@ def upload():
         f = request.files['file']
         f.save(secure_filename(f.filename))
         print("f.save worked")
-        insert_picture(f.filename)
+        insert_picture(f.filename.replace(" ", "_"))
         print("Insert Picture Worked")
         return render_template('form.html', screenload=screenload)
  
