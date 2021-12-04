@@ -2,16 +2,18 @@ from flask import Flask,render_template,request
 from werkzeug.utils import secure_filename
  
 app = Flask(__name__)
+db = SQL("sqlite:///databases.db")
 
-def insert_picture(conn, picture_file):
+def insert_picture(picture_file):
     with open(picture_file, 'rb') as input_file:
         ablob = input_file.read()
-        base=os.path.basename(picture_file)
-        afile, ext = os.path.splitext(base)
-        sql = '''INSERT INTO PICTURES
-        (PICTURE, TYPE, FILE_NAME)
-        VALUES(?, ?, ?);'''
-        conn.execute(sql,[sqlite3.Binary(ablob), ext, afile]) 
+        #base=os.path.basename(picture_file)
+        #afile, ext = os.path.splitext(base)
+        #sql = '''INSERT INTO PICTURES
+        #(PICTURE, TYPE, FILE_NAME)
+        #VALUES(?, ?, ?);'''
+        db.execute("INSERT INTO photos (gallery_id, photo_name, photo_file) VALUES (?, ?, ?)", 1, "photo", sqlite3.Binary(ablob))
+        #db.execute(sql,[sqlite3.Binary(ablob), ext, afile]) 
 
 @app.route('/')
 def form():
@@ -26,6 +28,8 @@ def upload():
         f = request.files['file']
         f.save(secure_filename(f.filename))
         print("f.save worked")
+        insert_picture(f.filename)
+        print("Insert Picture Worked")
         return render_template('form.html', screenload=screenload)
  
 app.run(host='localhost', port=5000)
