@@ -6,7 +6,7 @@ from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, login_required
+from helpers import apology, login_required, insert_picture
 
 # Configure application
 app = Flask(__name__)
@@ -157,10 +157,9 @@ def upload():
         f = request.files['photo']
         f.save(secure_filename(f.filename))
         print("f.save worked")
-        insert_picture(f.filename.replace(" ", "_"))
+        insert_picture(f.filename.replace(" ", "_"), photo_name, gallery_id)
         print("Insert Picture Worked")
-
-        
+        return redirect("/")
     else:
         return render_template("upload.html")
 
