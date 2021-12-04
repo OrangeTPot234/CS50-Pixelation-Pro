@@ -14,7 +14,7 @@ def extract_picture(picture_id):
     photo_data = db.execute("SELECT photo_file, photo_name FROM photos WHERE photo_id = ?", picture_id)    
     blob = photo_data[0]['photo_file']
     f = photo_data[0]['photo_name']
-    filename = f + '.png'
+    filename = f + '.jpg'
     with open(filename, 'wb') as output_file:
         output_file.write(blob)
     return filename
