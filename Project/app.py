@@ -167,6 +167,7 @@ def upload():
 @app.route("/gallery", methods=["GET", "POST"])
 @login_required
 def gallery():
+    gallery_id = request.args.get("g")
     return render_template("gallery.html")
 
 #### ERROR HANDLING ####
