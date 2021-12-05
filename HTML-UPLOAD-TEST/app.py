@@ -17,7 +17,6 @@ def extract_picture(picture_id):
     filename = f + '.jpg'
     with open(filename, 'wb') as output_file:
         output_file.write(blob)
-
     return filename
 
 
@@ -37,6 +36,8 @@ def upload():
         insert_picture(f.filename.replace(" ", "_"))
         print("Insert Picture Worked")
         picture = extract_picture(1)
+        g = picture
+        g.save(secure_filename(g.filename))
         return render_template('form.html', screenload=screenload, picture=picture)
  
 app.run(host='localhost', port=5000)
