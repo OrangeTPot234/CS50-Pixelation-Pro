@@ -9,7 +9,6 @@
       <br>
       <h5><i>File Uploaded</i></h5>
       <img src="{{url_for('static',filename = picture)}}">
-      <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png&width=400" title="{{ top }}">
       {% endif %}
    </body>
 </html>
