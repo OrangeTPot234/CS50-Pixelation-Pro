@@ -19,8 +19,7 @@ def extract_picture(picture_id):
         #output_file.write(blob)
     tf = open(filename, 'wb')
     tf.write(blob)
-    tf.save(secure_filename(tf.filename))
-    #return tf
+    return tf
 
 
 @app.route('/')
@@ -39,8 +38,6 @@ def upload():
         insert_picture(f.filename.replace(" ", "_"))
         print("Insert Picture Worked")
         picture = extract_picture(1)
-        g = picture
-        g.save(secure_filename(g.filename.replace(" ", "_")))
-        return render_template('form.html', screenload=screenload, picture=g.filename)
+        return render_template('form.html', screenload=screenload, picture=g)
  
 app.run(host='localhost', port=5000)
