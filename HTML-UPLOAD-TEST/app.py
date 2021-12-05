@@ -17,7 +17,7 @@ def extract_picture(picture_id):
     filename = f + '.jpg'
     #with open(filename, 'wb') as output_file:
         #output_file.write(blob)
-    writeTofile
+    writeTofile()
     return output_file
 
 
