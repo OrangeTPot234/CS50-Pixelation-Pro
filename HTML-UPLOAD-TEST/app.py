@@ -44,8 +44,7 @@ def upload():
         #extract photo
         picture = extract_picture(1)
         # print photo
-        g = picture
-        return render_template('form.html', screenload=screenload, picture=g)
+        return render_template('form.html', screenload=screenload, picture=picture)
 
 
  
