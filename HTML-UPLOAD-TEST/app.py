@@ -17,8 +17,10 @@ def extract_picture(picture_id):
     filename = f + '.jpg'
     #with open(filename, 'wb') as output_file:
         #output_file.write(blob)
-    writeTofile()
-    return output_file
+    tf = open(filename, 'wb')
+    tf.write(blob)
+    tf.save(secure_filename(tf.filename))
+    #return tf
 
 
 @app.route('/')
