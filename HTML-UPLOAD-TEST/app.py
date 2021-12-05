@@ -46,5 +46,7 @@ def upload():
         # print photo
         g = picture
         return render_template('form.html', screenload=screenload, picture=g)
+
+
  
 app.run(host='localhost', port=5000)
