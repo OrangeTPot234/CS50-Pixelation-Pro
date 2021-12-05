@@ -15,8 +15,9 @@ def extract_picture(picture_id):
     blob = photo_data[0]['photo_file']
     f = photo_data[0]['photo_name']
     filename = f + '.jpg'
-    with open(filename, 'wb') as output_file:
-        output_file.write(blob)
+    #with open(filename, 'wb') as output_file:
+        #output_file.write(blob)
+    writeTofile
     return output_file
 
 
