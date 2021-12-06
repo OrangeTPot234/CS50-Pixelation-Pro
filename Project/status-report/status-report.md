@@ -23,8 +23,8 @@ We have made a registration, log-in, and log out system that keeps track of user
 
 #### What have you not done for your project yet?
 
-TODO
+We have not impletemned a way to save multiple photos onto the server at a time, we have not implemented a way to edit the galleries themselves (and edit the photos in them), and we have not implatemented a way to search for/view other galleries 
 
 #### What problems, if any, have you encountered?
 
-We can't seem to figure out how to render our saved images onto the webpage. We can download the file from the SQL table into our codespace, but it does not pass from our codespace into the HTML page :( We have tried a couple different tricks too
+We can't seem to figure out how to render our saved images onto the webpage. We can download the file from the SQL table into our codespace, but it does not pass from our codespace into the HTML page :( We have tried a couple different tricks too...
