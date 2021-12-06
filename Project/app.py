@@ -153,11 +153,11 @@ def index():
     # If user does not own any stocks load page with special note
     if not galleries:
         screenload = 0
-        return render_template("index.html", username=username, screenload=screenload)
+        return render_template("userpage.html", username=username, screenload=screenload)
 
     # load screen and load appropriate variables into HTML
     screenload = 1
-    return render_template("index.html", username=username, galleries=galleries, screenload=screenload)
+    return render_template("userpage.html", username=username, galleries=galleries, screenload=screenload)
 
 
 @app.route("/upload", methods=["GET", "POST"])
