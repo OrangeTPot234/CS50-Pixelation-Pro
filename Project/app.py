@@ -184,7 +184,12 @@ def upload():
 def gallery():
     gallery_id = request.args.get("g")
     gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
-    return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'])
+    if not request.form.get(""):
+            return apology("must provide title", 400)
+    if not request.form.get(""):
+            return apology("must provide photo", 400)
+    else:
+        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'])
 
 
 
