@@ -7,16 +7,16 @@
 {% block main %}
 <body>
         <form method="POST" enctype="multipart/form-data">
-          <div class="form-row align-items-center">
-              <div class="col">
+          <div class="form-inline">
+              <div class="form-group">
                 <label for="exampleFormControlTextarea1">Gallery Title</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="gallery_title"></textarea>
               </div>
-              <div class="col">
+              <div class="form-group">
                 <label for="exampleFormControlFile1">Upload Image</label>
                 <input type="file" class="form-control-file" id="photo" name="photo">
               </div>
-              <div class="col">
+              <div class="form-group">
                 <button type="submit" class="btn btn-primary">Upload Gallery</button>
               </div>
           </div>
