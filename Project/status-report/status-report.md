@@ -23,7 +23,7 @@ We have made a registration, log-in, and log out system that keeps track of user
 
 #### What have you not done for your project yet?
 
-We have not impletemned a way to save multiple photos onto the server at a time, we have not implemented a way to edit the galleries themselves (and edit the photos in them), and we have not implatemented a way to search for/view other galleries 
+We have not impletemned a way to save multiple photos onto the server at a time, we have not implemented a way to edit the galleries themselves (and edit the photos in them), and we have not implatemented a way to search for/view other galleries and leave comments on those galleries.
 
 #### What problems, if any, have you encountered?
 
