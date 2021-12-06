@@ -19,7 +19,7 @@ Short answers for the below questions suffice. If you want to alter your plan fo
 
 #### What have you done for your project so far?
 
-TODO
+We have made a registration, log-in, and log out system that keeps track of users and user names. We have also designed a page/way to upload photos and save them
 
 #### What have you not done for your project yet?
 
@@ -27,4 +27,4 @@ TODO
 
 #### What problems, if any, have you encountered?
 
-TODO
+We can't seem to figure out how to render our saved images onto a webpage
