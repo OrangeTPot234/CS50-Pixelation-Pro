@@ -19,11 +19,11 @@ Short answers for the below questions suffice. If you want to alter your plan fo
 
 #### What have you done for your project so far?
 
-We have made a registration, log-in, and log out system that keeps track of users and user names. We have also designed a page/way to create a new gallery and upload an individual photo (and provide a name for the photo) and save the gallery. And from the main log in page, there is a way for the user to click to view their galleries——howerver, this page has not been completed yet; we cannot get the photos to render :(
+For the website, we have made a registration, log-in, and log out system that keeps track of users and user names. We have also designed functions on the user's homepage to create a new gallery and upload an individual photo (and provide a name for the photo) and save that gallery. And from the main log-in page, there is a way for the user to click to view their galleries——however, this page has not been completed yet; we cannot get the photos the user uploaded to render :(
 
 #### What have you not done for your project yet?
 
-We have not impletemned a way to save multiple photos onto the server at a time, we have not implemented a way to edit the galleries themselves (and edit the photos in them), and we have not implatemented a way to search for/view other galleries and leave comments on those galleries.
+We have not implemented a way to render the images saved in the SQL database, nor a way to save multiple photos onto the server at a time. We have not implemented a way to edit the galleries themselves (and edit the photos in them), and we have not implemented a way to search for/view other galleries and leave comments on those galleries.
 
 #### What problems, if any, have you encountered?
 
