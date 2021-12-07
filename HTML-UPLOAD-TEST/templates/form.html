@@ -8,7 +8,7 @@
       {% elif screenload == 1 %}
       <br>
       <h5><i>File Uploaded</i></h5>
-      <img src="url_for('static',filename = {{picture}}">
+      <img src="{{ url_for('static',filename = {{picture}} }}">
       {% endif %}
    </body>
 </html>
