@@ -20,7 +20,7 @@ def extract_picture(picture_id):
         #output_file.write(blob)
     tf = open(filename, 'wb')
     tf.write(blob)
-    return tf
+    return filename
 
 
 @app.route('/')
