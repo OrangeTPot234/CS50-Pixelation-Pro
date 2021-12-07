@@ -39,12 +39,17 @@ def upload():
         print("f.save worked")
         # insert into database
         insert_picture(f.filename.replace(" ", "_"))
+        return redirect("/download")
+
+@app.route('/download', methods = ['POST', 'GET'])
+def upload():
+    if request.method == 'GET':
         os.remove(f.filename)
         print("Insert Picture Worked")
         #extract photo
         picture = extract_picture(1)
         # print photo
-        return render_template('form.html', screenload=screenload, picture=picture)
+        return render_template('download.html', screenload=screenload, picture=picture)
 
 
  
