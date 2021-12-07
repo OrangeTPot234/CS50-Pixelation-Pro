@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ gallery_name }}
+
+    {{ for i in list }}
+
+    {{ end for }}
+
+{% endblock %}
+
+{% block main %}
+<h4>{{ gallery_name }}</h4>
+{% endblock %}
