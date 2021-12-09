@@ -192,7 +192,7 @@ def gallery():
 def download():
     user_photos = db.execute("SELECT * FROM photos WHERE user_id = ?", session["user_id"] )
     photo_names = []
-    for i in len(range(user_photos)):
+    for i in range(len(user_photos)):
         photo_name = user_photos[i]["photo_name"]+'.jpg'
         photo_names.append(photo_name)
     return render_template("download.html", user_name=session["user_id"], list=photo_names)
