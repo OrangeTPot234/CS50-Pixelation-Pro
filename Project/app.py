@@ -175,7 +175,7 @@ def upload():
         insert_picture(f.filename.replace(" ", "_"), photo_name, gallery_id, session["user_id"])
         print("Insert Picture Worked")
         os.remove(f.filename)
-        return redirect("/")
+        return redirect("/download")
     else:
         return render_template("upload.html")
 
@@ -190,12 +190,13 @@ def gallery():
 @app.route("/download", methods=["GET", "POST"])
 @login_required
 def download():
-    user_photos = db.execute("SELECT * FROM photos WHERE user_id = ?", session["user_id"] )
+    user_photos = db.execute("SELECT * FROM photos WHERE user_id = ?", session["user_id"])
+    user_name = db.execute("SELECT username FROM users WHERE user_id = ?", session["user_id"])
     photo_names = []
     for i in range(len(user_photos)):
         photo_name = user_photos[i]["photo_name"]+'.jpg'
         photo_names.append(photo_name)
-    return render_template("download.html", user_name=session["user_id"], list=photo_names)
+    return render_template("download.html", user_name=user_name[0]["username"], list=photo_names)
 
 
 

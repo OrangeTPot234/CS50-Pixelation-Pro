@@ -1,14 +1,15 @@
 {% extends "layout.html" %}
 
-    {% block title %}
-        {{ user_name }} Photos
-    {% endblock %}
+{% block title %}
+    {{ user_name }} Photos
+{% endblock %}
 
-    {% block main %}
-    <h4>{{ user_name }}</h4>
-    <h5>Photo Names</h5>
-    {{% for i in list %}}
-    <p>{{ i }}</p>
-    {{% end for %}}
+{% block main %}
+<h4>{{ user_name }}</h4>
+<br>
+<h5>Photo Names</h5>
+{% for i in list %}
+<p>{{ i }}</p>
+{% endfor %}
 
 {% endblock %}
