@@ -23,6 +23,8 @@ Session(app)
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///databases.db")
 
+GALLERY_PHOTOS = []
+
 @app.after_request
 def after_request(response):
     """Ensure responses aren't cached"""
@@ -179,15 +181,6 @@ def upload():
     else:
         return render_template("upload.html")
 
-@app.route("/gallery", methods=["GET", "POST"])
-@login_required
-def gallery():
-    gallery_id = request.args.get("g")
-    gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
-    photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", gallery_id)
-
-    return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'])
-
 @app.route("/download", methods=["GET", "POST"])
 @login_required
 def download():
@@ -200,7 +193,29 @@ def download():
     return render_template("download.html", user_name=user_name[0]["username"], list=photo_names)
 
 
+@app.route("/gallery", methods=["GET", "POST"])
+@login_required
+def gallery():
+    gallery_id = request.args.get("g")
+    gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
+    gallery_photos = extract_pictures(gallery_id)
+    
 
+    return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'])
+
+def extract_pictures(gallery_id):
+    photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", gallery_id)    
+    GALLERY_PHOTOS = []
+    for i in range(len(photo_info)):
+        blob = photo_data[0]['photo_file']
+        f = photo_data[0]['photo_name']
+        filename = f + '.jpg'
+        #with open(filename, 'wb') as output_file:
+            #output_file.write(blob)
+        tf = open(filename, 'wb')
+        tf.write(blob)
+        GALLERY_PHOTOS.append(filename)
+    return GALLERY_PHOTOS
 
 
 
