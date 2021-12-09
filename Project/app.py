@@ -206,8 +206,8 @@ def extract_pictures(gallery_id):
     photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", gallery_id)    
     GALLERY_PHOTOS = []
     for i in range(len(photo_info)):
-        blob = photo_data[0]['photo_file']
-        f = photo_data[0]['photo_name']
+        blob = photo_info[i]['photo_file']
+        f = photo_info[i]['photo_name']
         filename = f + '.jpg'
         #with open(filename, 'wb') as output_file:
             #output_file.write(blob)
