@@ -6,4 +6,8 @@
 
 {% block main %}
 <h4>{{ gallery_name }}</h4>
+<br>
+{% for i in list %}
+<img src="{{ i }}" alt="Reflections">
+{% endfor %}
 {% endblock %}
