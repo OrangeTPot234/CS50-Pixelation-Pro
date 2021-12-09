@@ -39,7 +39,7 @@ def login_required(f):
 
 db = SQL("sqlite:///databases.db")
 
-def insert_picture(picture_file, photo_name, gallery_id):
+def insert_picture(picture_file, photo_name, gallery_id, user_id):
     with open(picture_file, 'rb') as input_file:
         blob = input_file.read()
-        db.execute("INSERT INTO photos (gallery_id, photo_name, photo_file) VALUES (?, ?, ?)", gallery_id, photo_name, blob)
+        db.execute("INSERT INTO photos (gallery_id, photo_name, photo_file, user_id) VALUES (?, ?, ?, ?)", gallery_id, photo_name, blob, user_id)
