@@ -188,14 +188,15 @@ def gallery():
             return apology("must provide title and photo", 400)
     if not request.form.get("photo"):
             return apology("must provide title and photo", 400)
+    photo_names = []
     for i in len(range(gallery_info)):
-        photo_name = 
+        photo_name = gallery_info[i]["photo_name"] 
 
     else:
         return render_template("download.html", gallery_name=gallery_info[0]['gallery_name'])
 
 
-def extract
+
 
 
 
