@@ -3,12 +3,13 @@
 {% block title %}
     {{ gallery_name }}
 
-    {{% for i in list %}}
-    <p>{{ i }}</p>
-    {{% end for %}}
-
 {% endblock %}
 
 {% block main %}
 <h4>{{ gallery_name }}</h4>
+<h5>Photo Names</h5>
+{{% for i in list %}}
+<p>{{ i }}</p>
+{{% end for %}}
+
 {% endblock %}
