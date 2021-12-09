@@ -7,7 +7,7 @@ from werkzeug.exceptions import default_exceptions, HTTPException, InternalServe
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 
-from Project.photos.helpers import apology, login_required, insert_picture
+from helpers import apology, login_required, insert_picture
 
 # Configure application
 app = Flask(__name__)
