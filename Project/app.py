@@ -190,11 +190,11 @@ def gallery():
             return apology("must provide title and photo", 400)
     photo_names = []
     for i in len(range(gallery_info)):
-        photo_name = gallery_info[i]["photo_name"] 
-        
+        photo_name = gallery_info[i]["photo_name"]+'.jpg'
+        photo_names.append(photo_name)
 
     else:
-        return render_template("download.html", gallery_name=gallery_info[0]['gallery_name'])
+        return render_template("download.html", gallery_name=gallery_info[0]['gallery_name'], list=photo_names)
 
 
 
