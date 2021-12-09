@@ -189,7 +189,7 @@ def gallery():
     if not request.form.get("photo"):
             return apology("must provide title and photo", 400)
     else:
-        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'])
+        return render_template("download.html", gallery_name=gallery_info[0]['gallery_name'])
 
 
 
