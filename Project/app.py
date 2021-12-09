@@ -184,13 +184,8 @@ def upload():
 def gallery():
     gallery_id = request.args.get("g")
     gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
-    if not request.form.get("title"):
-            return apology("must provide title and photo", 400)
-    if not request.form.get("photo"):
-            return apology("must provide title and photo", 400)
 
-    else:
-        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'])
+    return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'])
 
 @app.route("/download", methods=["GET", "POST"])
 @login_required
@@ -205,8 +200,7 @@ def download():
     for i in len(range(gallery_info)):
         photo_name = gallery_info[i]["photo_name"]+'.jpg'
         photo_names.append(photo_name)
-
-     return render_template("download.html", user_name=session["user_id"], list=photo_names)
+    return render_template("download.html", user_name=session["user_id"], list=photo_names)
 
 
 
