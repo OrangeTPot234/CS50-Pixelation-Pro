@@ -206,8 +206,7 @@ def download():
         photo_name = gallery_info[i]["photo_name"]+'.jpg'
         photo_names.append(photo_name)
 
-    else:
-        return render_template("download.html", user_name=session["user_id"], list=photo_names)
+     return render_template("download.html", user_name=session["user_id"], list=photo_names)
 
 
 
