@@ -7,7 +7,7 @@ from werkzeug.exceptions import default_exceptions, HTTPException, InternalServe
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 
-from helpers import apology, login_required, insert_picture
+from Project.photos.helpers import apology, login_required, insert_picture
 
 # Configure application
 app = Flask(__name__)
@@ -24,6 +24,7 @@ Session(app)
 db = SQL("sqlite:///databases.db")
 
 GALLERY_PHOTOS = []
+USER_PHOTOS = []
 
 @app.after_request
 def after_request(response):
@@ -181,6 +182,18 @@ def upload():
     else:
         return render_template("upload.html")
 
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route("/download", methods=["GET", "POST"])
 @login_required
 def download():
@@ -190,7 +203,36 @@ def download():
     for i in range(len(user_photos)):
         photo_name = user_photos[i]["photo_name"]+'.jpg'
         photo_names.append(photo_name)
-    return render_template("download.html", user_name=user_name[0]["username"], list=photo_names)
+    photographs = extract_user_pictures(session["user_id"])
+    return render_template("download.html", user_name=user_name[0]["username"], list=photo_names, photo_list=photographs)
+
+def extract_user_pictures(user_id):
+    photo_info = db.execute("SELECT * FROM photos WHERE user_id = ?", user_id)    
+    USER_PHOTOS = []
+    for i in range(len(photo_info)):
+        blob = photo_info[i]['photo_file']
+        f = photo_info[i]['photo_name']
+        filename = f + '.jpg'
+        #with open(filename, 'wb') as output_file:
+            #output_file.write(blob)
+        tf = open(filename, 'wb')
+        tf.write(blob)
+        USER_PHOTOS.append(filename)
+    return USER_PHOTOS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @app.route("/gallery", methods=["GET", "POST"])
@@ -198,11 +240,11 @@ def download():
 def gallery():
     gallery_id = request.args.get("g")
     gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
-    gallery_photos = extract_pictures(gallery_id)
+    gallery_photos = extract_gallery_pictures(gallery_id)
 
     return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], list=gallery_photos)
 
-def extract_pictures(gallery_id):
+def extract_gallery_pictures(gallery_id):
     photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", gallery_id)    
     GALLERY_PHOTOS = []
     for i in range(len(photo_info)):

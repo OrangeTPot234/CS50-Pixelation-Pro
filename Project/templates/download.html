@@ -11,5 +11,10 @@
 {% for i in list %}
 <p>{{ i }}</p>
 {% endfor %}
+<br>
+<h5>Photographs</h5>
+{% for i in photo_list %}
+<img src="photos/{{ i }}" alt="{{ i }}">
+{% endfor %}
 
 {% endblock %}
