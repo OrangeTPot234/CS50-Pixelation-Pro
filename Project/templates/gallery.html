@@ -5,6 +5,12 @@
 {% endblock %}
 
 {% block main %}
+<form action="/search" method="get">
+    <input autocomplete="off" autofocus name="q" placeholder="Search Galleries" type="search">
+    <input type="submit" value="Search">
+</form>
+<br>
+<br>
 <h4>{{ gallery_name }}</h4>
 <br>
 <h5>Photographs</h5>
