@@ -23,8 +23,8 @@ Session(app)
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///databases.db")
 
-GALLERY_PHOTOS = []
-USER_PHOTOS = []
+#GALLERY_PHOTOS = []
+#USER_PHOTOS = []
 
 @app.after_request
 def after_request(response):
@@ -200,14 +200,13 @@ def download():
     user_photos = db.execute("SELECT * FROM photos WHERE user_id = ?", session["user_id"])
     user_name = db.execute("SELECT username FROM users WHERE user_id = ?", session["user_id"])
     photographs = extract_user_pictures(session["user_id"])
-    print(photographs)
     return render_template("download.html", user_name=user_name[0]["username"], photo_list=photographs)
 
 def extract_user_pictures(user_id):
     photo_info = db.execute("SELECT * FROM photos WHERE user_id = ?", user_id)    
     USER_PHOTOS = []
-    photo_names = {}
     for i in range(len(photo_info)):
+        photo_names = {}
         blob = photo_info[i]['photo_file']
         f = photo_info[i]['photo_name']
         filename = 'static/'+ f + '.jpg'
@@ -248,6 +247,7 @@ def extract_gallery_pictures(gallery_id):
     photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", gallery_id)    
     GALLERY_PHOTOS = []
     for i in range(len(photo_info)):
+        photo_names = {}
         blob = photo_info[i]['photo_file']
         f = photo_info[i]['photo_name']
         filename = f + '.jpg'
@@ -255,7 +255,9 @@ def extract_gallery_pictures(gallery_id):
             #output_file.write(blob)
         tf = open(filename, 'wb')
         tf.write(blob)
-        GALLERY_PHOTOS.append(filename)
+        photo_names["name"] = f
+        photo_names["path"] = filename
+        GALLERY_PHOTOS.append(photo_names)
     return GALLERY_PHOTOS
 
 
