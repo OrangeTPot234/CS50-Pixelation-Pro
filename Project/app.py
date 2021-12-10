@@ -199,12 +199,9 @@ def upload():
 def download():
     user_photos = db.execute("SELECT * FROM photos WHERE user_id = ?", session["user_id"])
     user_name = db.execute("SELECT username FROM users WHERE user_id = ?", session["user_id"])
-    photo_names = []
-    for i in range(len(user_photos)):
-        photo_name = user_photos[i]["photo_name"]+'.jpg'
-        photo_names.append(photo_name)
     photographs = extract_user_pictures(session["user_id"])
-    return render_template("download.html", user_name=user_name[0]["username"], list=photo_names, photo_list=photographs)
+    print(photographs)
+    return render_template("download.html", user_name=user_name[0]["username"], photo_list=photographs)
 
 def extract_user_pictures(user_id):
     photo_info = db.execute("SELECT * FROM photos WHERE user_id = ?", user_id)    
