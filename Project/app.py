@@ -250,7 +250,7 @@ def updatephoto():
         photo_name = request.form.get("photo_name")
         photo_id = request.form.get("photo_id")
         gallery_id = request.form.get("gallery_id")
-        db.execute("UPDATE photo SET photo_name = ? WHERE photo_id = ?", photo_name, photo_id)
+        db.execute("UPDATE photos SET photo_name = ? WHERE photo_id = ?", photo_name, photo_id)
         return redirect("/edit?g="+gallery_id)
     else: 
         return redirect("/")
