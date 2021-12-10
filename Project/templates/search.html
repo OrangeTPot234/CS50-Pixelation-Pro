@@ -8,8 +8,7 @@
 <h4>{{ gallery_name }}</h4>
 <br>
 <h5>Photographs</h5>
-{% for i in photo_list %}
-<img src="{{ i["path"] }}" alt="{{ i["name"] }}">
-<p>{{ i["name"] }}</p>
+{% for i in galleries %}
+<a href="{{ i["gallery_id"] }}"><button>{{ i["gallery_name"] }}</button>
 {% endfor %}
 {% endblock %}
