@@ -222,6 +222,9 @@ def edit():
         if not gallery_info[0]['user_id'] == session["user_id"]:
             return redirect("/gallery?g=" + gallery_id)
         return render_template("edit.html", galleries=gallery_info)
+    elif request.method == "POST":
+
+        return render_template("edit.html", galleries=gallery_info)
 
 
 
