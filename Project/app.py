@@ -206,10 +206,6 @@ def gallery():
 
 
 
-
-
-
-
 #### ERROR HANDLING ####
 
 
