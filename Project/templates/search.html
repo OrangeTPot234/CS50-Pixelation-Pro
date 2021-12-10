@@ -8,7 +8,15 @@
 <h4>{{ gallery_name }}</h4>
 <br>
 <h5>Photographs</h5>
-{% for i in galleries %}
-<a href="/gallery?g={{ i["gallery_id"] }}"><button>{{ i["gallery_name"] }} by {{ i["username"] }}</button>
-{% endfor %}
+<div style="padding-left: 2em; padding-right: 2em;">
+    <table class="table table-hover">
+        <tbody>
+            {% for i in galleries %}
+            <tr>
+                <td><a href="/gallery?g={{ i["gallery_id"] }}"><button>{{ i["gallery_name"] }} by {{ i["username"] }}</button></a></td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
 {% endblock %}
