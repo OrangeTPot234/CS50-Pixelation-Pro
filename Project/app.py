@@ -249,6 +249,7 @@ def delete():
         print(photo_id)
         if user_id != session["user_id"]:
             return redirect("/gallery?g=" + gallery_id)
+        print("Passed user_id Check")
         db.execute("DELETE FROM photos WHERE photo_id = ?", photo_id)
         return redirect("/edit?g=" + gallery_id)
     else: 
