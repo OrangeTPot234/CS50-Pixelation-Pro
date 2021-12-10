@@ -194,11 +194,12 @@ def download():
 @app.route("/gallery", methods=["GET", "POST"])
 @login_required
 def gallery():
-    gallery_id = request.args.get("g")
-    gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
-    gallery_photos = extract_pictures(gallery_id, "gal")
-
-    return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], list=gallery_photos)
+    if request.method == "GET":
+        gallery_id = request.args.get("g")
+        gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
+        gallery_photos = extract_pictures(gallery_id, "gal")
+        print(gallery_photos)
+        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], list=gallery_photos)
 
 
 
