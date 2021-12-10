@@ -223,9 +223,9 @@ def edit():
             return redirect("/gallery?g=" + gallery_id)
         photos = extract_pictures(gallery_id, "gal")
         return render_template("edit.html", galleries=gallery_info, photos=photos)
-    elif request.method == "POST":
+    """elif request.method == "POST":
         request.form.get
-        return render_template("edit.html", galleries=gallery_info)
+        return render_template("edit.html", galleries=gallery_info)"""
 
 
 
