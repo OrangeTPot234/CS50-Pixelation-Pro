@@ -224,7 +224,21 @@ def edit():
         request.form.get
         return render_template("edit.html", galleries=gallery_info)"""
 
-
+@app.route("/upload", methods=["GET", "POST"])
+@login_required
+def upload():
+    if request.method == "POST":
+        gallery_title = request.form.get("gallery_title")
+        db.execute("INSERT INTO galleries (user_id, gallery_name) VALUES (?, ?)", session["user_id"], gallery_title)
+        gallery_id = db.execute("SELECT gallery_id FROM galleries WHERE user_id = ? AND gallery_name = ?", session["user_id"], gallery_title)[0]['gallery_id']
+        photo_name = request.form.get("photo_name")
+        f = request.files['photo']
+        f.save(secure_filename(f.filename))
+        insert_picture(f.filename.replace(" ", "_"), photo_name, gallery_id, session["user_id"])
+        os.remove(f.filename)
+        return redirect("/download")
+    else:
+        return render_template("newgallery.html")
 
 #### ERROR HANDLING ####
 
