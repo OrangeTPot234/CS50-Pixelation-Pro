@@ -8,6 +8,6 @@
 <h4>{{ gallery_name }}</h4>
 <br>
 {% for i in list %}
-<img src="photos/webpage/{{ i }}" alt="Reflections">
+<img src="{{ i["path"] }}" alt="{{ i["name"] }}">
 {% endfor %}
 {% endblock %}
