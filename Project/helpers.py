@@ -61,7 +61,7 @@ def extract_pictures(search_id, query_type):
         return gallery_photos
     elif query_type == "user":
         photo_info = db.execute("SELECT * FROM photos WHERE user_id = ?", search_id)
-                for i in range(len(photo_info)):
+        for i in range(len(photo_info)):
             photo_names = {}
             blob = photo_info[i]['photo_file']
             f = photo_info[i]['photo_name']
