@@ -45,37 +45,21 @@ def insert_picture(picture_file, photo_name, gallery_id, user_id):
         db.execute("INSERT INTO photos (gallery_id, photo_name, photo_file, user_id) VALUES (?, ?, ?, ?)", gallery_id, photo_name, blob, user_id)
 
 def extract_pictures(search_id, query_type):
-    if query_type == "gallery":
-        photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", gallery_id)    
+    gallery_photos = []
+    if query_type == "gal":
+        photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", search_id)    
     elif query_type == "user":
-    GALLERY_PHOTOS = []
+        photo_info = db.execute("SELECT * FROM photos WHERE user_id = ?", search_id)
+    else:
+        return none
     for i in range(len(photo_info)):
         photo_names = {}
         blob = photo_info[i]['photo_file']
         f = photo_info[i]['photo_name']
         filename = f + '.jpg'
-        #with open(filename, 'wb') as output_file:
-            #output_file.write(blob)
         tf = open(filename, 'wb')
         tf.write(blob)
         photo_names["name"] = f
         photo_names["path"] = filename
-        GALLERY_PHOTOS.append(photo_names)
-    return GALLERY_PHOTOS
-
-def extract_user_pictures(user_id):
-    photo_info = db.execute("SELECT * FROM photos WHERE user_id = ?", user_id)    
-    USER_PHOTOS = []
-    for i in range(len(photo_info)):
-        photo_names = {}
-        blob = photo_info[i]['photo_file']
-        f = photo_info[i]['photo_name']
-        filename = 'static/'+ f + '.jpg'
-        #with open(filename, 'wb') as output_file:
-            #output_file.write(blob)
-        tf = open(filename, 'wb')
-        tf.write(blob)
-        photo_names["name"] = f
-        photo_names["path"] = filename
-        USER_PHOTOS.append(photo_names)
-    return USER_PHOTOS
+        gallery_photos.append(photo_names)
+    return gallery_photos

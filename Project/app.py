@@ -7,7 +7,7 @@ from werkzeug.exceptions import default_exceptions, HTTPException, InternalServe
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 
-from helpers import apology, login_required, insert_picture, extract_gallery_pictures, 
+from helpers import apology, login_required, insert_picture, extract_pictures 
 
 # Configure application
 app = Flask(__name__)
@@ -182,24 +182,12 @@ def upload():
     else:
         return render_template("upload.html")
 
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route("/download", methods=["GET", "POST"])
 @login_required
 def download():
     user_photos = db.execute("SELECT * FROM photos WHERE user_id = ?", session["user_id"])
     user_name = db.execute("SELECT username FROM users WHERE user_id = ?", session["user_id"])
-    photographs = extract_user_pictures(session["user_id"])
+    photographs = extract_pictures(session["user_id"], user)
     return render_template("download.html", user_name=user_name[0]["username"], photo_list=photographs)
 
 
@@ -224,7 +212,7 @@ def download():
 def gallery():
     gallery_id = request.args.get("g")
     gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
-    gallery_photos = extract_gallery_pictures(gallery_id)
+    gallery_photos = extract_pictures(gallery_id, gal)
 
     return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], list=gallery_photos)
 
