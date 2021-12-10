@@ -194,8 +194,8 @@ def gallery():
     if request.method == "GET":
         gallery_id = request.args.get("g")
         gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
-        #if gallery_info[0]['user_id'] == session["user_id"]:
-            #return redirect("/edit?g=" + gallery_id)
+        if gallery_info[0]['user_id'] == session["user_id"]:
+            return redirect("/edit?g=" + gallery_id)
         counter = gallery_info[0]["views"] + 1
         db.execute("UPDATE galleries SET views = ? WHERE gallery_id = ?", counter, gallery_id) 
         photos = extract_pictures(gallery_id, "gal")
@@ -247,7 +247,7 @@ def delete():
         photo_id = request.args.get("i")
         if not user_id == session["user_id"]:
             return redirect("/gallery?g=" + gallery_id)
-        db.execute("")
+        db.execute("DELETE FROM photos WHERE photo_id = ? AND gallery_id = ?", photo_id, gallery_id)
         return redirect("/edit?g=" + gallery_id)
     else: 
         return redirect("/")

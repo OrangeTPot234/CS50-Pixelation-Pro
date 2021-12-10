@@ -14,13 +14,11 @@
 <br>
 <h5>Add New Photos</h5>
 <form action="/upload" method="POST" enctype="multipart/form-data">
-    <div>
         <label for="exampleFormControlFile1">Upload Image</label>
         <input type="file" class="form-control-file" id="photo" name="photo">
         <input type="text" class="form-control" id="photo_name" name="photo_name">
         <input type="hidden" name="gallery_id" value="{{ galleries[0]["gallery_name"] }}">
         <button type="submit" class="btn btn-primary">Upload Gallery</button>
-    </div>
 </form>
 <br>
 <h4>{{ gallery_name }}</h4>
