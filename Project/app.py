@@ -227,7 +227,7 @@ def upgalnm():
     if request.method == "POST":
         gallery_name = request.form.get("gallery_name")
         gallery_id = request.form.get("gallery_id")
-        db.execute = ("UPDATE galleries SET gallery_name = ? WHERE gallery_id = ?", gallery_name, gallery_id)
+        db.execute("UPDATE galleries SET gallery_name = ? WHERE gallery_id = ?", gallery_name, gallery_id)
         return redirect("/edit?g="+gallery_id)
     else: 
         return redirect("/")
