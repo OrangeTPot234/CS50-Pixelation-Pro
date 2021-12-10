@@ -163,10 +163,9 @@ def index():
     return render_template("userpage.html", username=username, galleries=galleries, screenload=screenload)
 
 
-@app.route("/upload", methods=["GET", "POST"])
+@app.route("/newgallery", methods=["GET", "POST"])
 @login_required
-def upload():
-    print("i'm in upload")
+def newgallery():
     if request.method == "POST":
         gallery_title = request.form.get("gallery_title")
         db.execute("INSERT INTO galleries (user_id, gallery_name) VALUES (?, ?)", session["user_id"], gallery_title)
@@ -174,13 +173,11 @@ def upload():
         photo_name = request.form.get("photo_name")
         f = request.files['photo']
         f.save(secure_filename(f.filename))
-        print("f.save worked")
         insert_picture(f.filename.replace(" ", "_"), photo_name, gallery_id, session["user_id"])
-        print("Insert Picture Worked")
         os.remove(f.filename)
         return redirect("/download")
     else:
-        return render_template("upload.html")
+        return render_template("newgallery.html")
 
 @app.route("/download", methods=["GET", "POST"])
 @login_required
