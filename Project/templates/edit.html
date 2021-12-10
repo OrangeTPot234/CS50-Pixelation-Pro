@@ -7,13 +7,13 @@
 {% block main %}
 <h4> Gallery Name</h4>
 <form action="/search" method="get">
-    <input autocomplete="off" autofocus name="q" placeholder="{{ galleries }}" type="search">
+    <input autocomplete="off" autofocus name="q" placeholder="{{ galleries[0]["gallery_name"] }}" type="search">
     <input type="submit" value="Search">
 </form>
 <br>
 <br>
 <h5>Add New Photos</h5>
-<form action="/upload" method="POST" enctype="multipart/form-data">
+<form action="/upload?g={{ galleries[0]["gallery_name"] }}" method="POST" enctype="multipart/form-data">
     <div>
         <label for="exampleFormControlFile1">Upload Image</label>
         <input type="file" class="form-control-file" id="photo" name="photo">
