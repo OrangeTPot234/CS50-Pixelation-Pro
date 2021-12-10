@@ -221,7 +221,8 @@ def edit():
         gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id LIKE ?", gallery_id)
         if not gallery_info[0]['user_id'] == session["user_id"]:
             return redirect("/gallery?g=" + gallery_id)
-        return render_template("edit.html", galleries=gallery_info)
+        photos = extract_pictures(gallery_id, "gal")
+        return render_template("edit.html", galleries=gallery_info, photos=photos)
     elif request.method == "POST":
         request.form.get
         return render_template("edit.html", galleries=gallery_info)
