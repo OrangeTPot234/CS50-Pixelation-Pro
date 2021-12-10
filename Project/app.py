@@ -216,7 +216,7 @@ def edit():
     if request.method == "GET":
         gallery_id = request.args.get("g")
         gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id LIKE ?", gallery_id)
-        if not gallery_info[0]['user_id'] == session["user_id"]:
+        if gallery_info[0]['user_id'] != session["user_id"]:
             return redirect("/gallery?g=" + gallery_id)
         photos = extract_pictures(gallery_id, "gal")
         return render_template("edit.html", galleries=gallery_info, photos=photos)
@@ -245,7 +245,7 @@ def delete():
         gallery_id = request.args.get("g")
         user_id = request.args.get("u")
         photo_id = request.args.get("i")
-        if not user_id == session["user_id"]:
+        if user_id != session["user_id"]:
             return redirect("/gallery?g=" + gallery_id)
         db.execute("DELETE FROM photos WHERE photo_id = ? AND gallery_id = ?", photo_id, gallery_id)
         return redirect("/edit?g=" + gallery_id)
