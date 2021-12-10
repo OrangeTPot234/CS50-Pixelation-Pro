@@ -218,7 +218,7 @@ def search():
 def edit():
     if request.method == "GET":
         gallery_id = request.args.get("g")
-        gallery_info = db.execute("SELECT * FROM galleries JOIN users ON users.user_id = galleries.user_id  WHERE gallery_name LIKE ?",'%' + search + '%' )
+        gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id LIKE ?", gallery_id)
         if not gallery_info[0]['user_id'] == session["user_id"]:
             return redirect("/gallery?g=" + gallery_id)
         return render_template("edit.html", galleries=gallery_info)
