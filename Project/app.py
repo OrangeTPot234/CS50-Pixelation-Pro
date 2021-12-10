@@ -198,7 +198,7 @@ def gallery():
         gallery_id = request.args.get("g")
         gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
         #if gallery_info[0]['user_id'] == session["user_id"]:
-            #return redirect("/")
+            #return redirect("/edit?g=" + gallery_id)
         counter = gallery_info[0]["views"] + 1
         db.execute("UPDATE galleries SET views = ? WHERE gallery_id = ?", counter, gallery_id) 
         photos = extract_pictures(gallery_id, "gal")
@@ -213,6 +213,15 @@ def search():
         print(gallery_info)
         return render_template("search.html", galleries=gallery_info)
 
+@app.route("/edit", methods=["GET", "POST"])
+@login_required
+def edit():
+    if request.method == "GET":
+        gallery_id = request.args.get("g")
+        gallery_info = db.execute("SELECT * FROM galleries JOIN users ON users.user_id = galleries.user_id  WHERE gallery_name LIKE ?",'%' + search + '%' )
+        if not gallery_info[0]['user_id'] == session["user_id"]:
+            return redirect("/gallery?g=" + gallery_id)
+        return render_template("edit.html", galleries=gallery_info)
 
 
 
