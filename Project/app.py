@@ -228,8 +228,7 @@ def upgalnm():
         gallery_name = request.form.get("gallery_name")
         gallery_id = request.form.get("gallery_id")
         db.execute = ("UPDATE galleries SET gallery_name = ? WHERE gallery_id = ?", gallery_name, gallery_id)
-        gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id LIKE ?", gallery_id)
-        return render_template("edit.html", galleries=gallery_info)
+        return redirect("/edit?g="+gallery_id)
 
 @app.route("/upload", methods=["GET", "POST"])
 @login_required
