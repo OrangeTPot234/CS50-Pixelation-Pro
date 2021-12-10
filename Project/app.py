@@ -191,22 +191,6 @@ def download():
     return render_template("download.html", user_name=user_name[0]["username"], photo_list=photographs)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route("/gallery", methods=["GET", "POST"])
 @login_required
 def gallery():
