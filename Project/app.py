@@ -7,7 +7,7 @@ from werkzeug.exceptions import default_exceptions, HTTPException, InternalServe
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 
-from helpers import apology, login_required, insert_picture
+from helpers import apology, login_required, insert_picture, extract_gallery_pictures, 
 
 # Configure application
 app = Flask(__name__)
@@ -202,22 +202,7 @@ def download():
     photographs = extract_user_pictures(session["user_id"])
     return render_template("download.html", user_name=user_name[0]["username"], photo_list=photographs)
 
-def extract_user_pictures(user_id):
-    photo_info = db.execute("SELECT * FROM photos WHERE user_id = ?", user_id)    
-    USER_PHOTOS = []
-    for i in range(len(photo_info)):
-        photo_names = {}
-        blob = photo_info[i]['photo_file']
-        f = photo_info[i]['photo_name']
-        filename = 'static/'+ f + '.jpg'
-        #with open(filename, 'wb') as output_file:
-            #output_file.write(blob)
-        tf = open(filename, 'wb')
-        tf.write(blob)
-        photo_names["name"] = f
-        photo_names["path"] = filename
-        USER_PHOTOS.append(photo_names)
-    return USER_PHOTOS
+
 
 
 
@@ -243,22 +228,6 @@ def gallery():
 
     return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], list=gallery_photos)
 
-def extract_gallery_pictures(gallery_id):
-    photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", gallery_id)    
-    GALLERY_PHOTOS = []
-    for i in range(len(photo_info)):
-        photo_names = {}
-        blob = photo_info[i]['photo_file']
-        f = photo_info[i]['photo_name']
-        filename = f + '.jpg'
-        #with open(filename, 'wb') as output_file:
-            #output_file.write(blob)
-        tf = open(filename, 'wb')
-        tf.write(blob)
-        photo_names["name"] = f
-        photo_names["path"] = filename
-        GALLERY_PHOTOS.append(photo_names)
-    return GALLERY_PHOTOS
 
 
 
