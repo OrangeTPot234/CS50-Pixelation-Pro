@@ -6,19 +6,18 @@
 
 {% block main %}
     <h4>{{ username }}</h4>
-    <a href="/upload">
-        <button type="button"> Add Gallery</button></a>
+    <a href="/upload"><button type="button"> Add Gallery</button></a>
 
-    <a href="/download">
-        <button type="button">View All Photos</button></a>
-
+    <a href="/download"><button type="button">View All Photos</button></a>
+    <br>
+    <br>
     <div style="padding-left: 2em; padding-right: 2em;">
         <table class="table table-hover">
             <tbody>
                 {% if screenload == 1 %}
                 {% for i in galleries %}
                 <tr>
-                    <td><a href="/gallery?g={{ i['gallery_id'] }}">{{ i["gallery_name"] }}</a></td>
+                    <td><a href="/gallery?g={{ i['gallery_id'] }}"></a><button type="button">{{ i["gallery_name"] }}</button></a></td>
                 {% endfor %}
                 {% endif %}
                 </tr>
