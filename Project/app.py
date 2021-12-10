@@ -243,11 +243,13 @@ def upload():
 def delete():
     if request.method == "GET":
         gallery_id = request.args.get("g")
+        print(gallery_id)
         user_id = request.args.get("u")
         photo_id = request.args.get("i")
+        print(photo_id)
         if user_id != session["user_id"]:
             return redirect("/gallery?g=" + gallery_id)
-        db.execute("DELETE FROM photos WHERE photo_id = ? AND gallery_id = ?", photo_id, gallery_id)
+        db.execute("DELETE FROM photos WHERE photo_id = ?", photo_id)
         return redirect("/edit?g=" + gallery_id)
     else: 
         return redirect("/")
