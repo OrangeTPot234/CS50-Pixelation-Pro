@@ -209,6 +209,7 @@ def download():
 def extract_user_pictures(user_id):
     photo_info = db.execute("SELECT * FROM photos WHERE user_id = ?", user_id)    
     USER_PHOTOS = []
+    photo_names = {}
     for i in range(len(photo_info)):
         blob = photo_info[i]['photo_file']
         f = photo_info[i]['photo_name']
@@ -217,7 +218,9 @@ def extract_user_pictures(user_id):
             #output_file.write(blob)
         tf = open(filename, 'wb')
         tf.write(blob)
-        USER_PHOTOS.append(filename)
+        photo_names["name"] = f
+        photo_names["path"] = filename
+        USER_PHOTOS.append(photo_names)
     return USER_PHOTOS
 
 
