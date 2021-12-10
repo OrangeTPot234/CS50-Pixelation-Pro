@@ -12,6 +12,11 @@
     <button type="submit" class="btn btn-primary">Update Gallery Name</button>
 </form>
 <br>
+<form action="/deletegal" method="POST">
+    <input type="hidden" name="gallery_id_3" value="{{ galleries[0]["gallery_id"] }}">
+    <button type="submit" class="btn btn-primary">DELETE GALLERY</button>
+</form>
+<br>
 <br>
 <h5>Add New Photos</h5>
 <form action="/upload" method="POST" enctype="multipart/form-data">
@@ -30,7 +35,14 @@
 {% for i in photos %}
 <div>
 <img src="{{ i["path"] }}" alt="{{ i["name"] }}">
-<p>{{ i["name"] }}</p>
+<form action="/updatephotos" method="POST">
+    <input type="text" name="photo_name" placeholder="{{ i["name"] }}">
+    <input type="hidden" name="photo_id" value="{{ i["photo_id"] }}">
+    <input type="hidden" name="gallery_id_2" value="{{ galleries[0]["gallery_id"] }}">
+    <button type="submit" class="btn btn-primary">Update Photo Name</button>
+</form>
+<br>
+<br>
 <a href="/delete?i={{ i["photo_id"] }}&g={{ galleries[0]["gallery_id"] }}&u={{ galleries[0]["user_id"] }}"><button>Delete Photo</button></a>
 </div>
 {% endfor %}
