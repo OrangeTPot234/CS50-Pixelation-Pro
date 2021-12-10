@@ -232,6 +232,29 @@ def upgalnm():
     else: 
         return redirect("/")
 
+@app.route("/upgalnm", methods=["GET", "POST"])
+@login_required
+def upgalnm():
+    if request.method == "POST":
+        gallery_name = request.form.get("gallery_name")
+        gallery_id = request.form.get("gallery_id")
+        db.execute("UPDATE galleries SET gallery_name = ? WHERE gallery_id = ?", gallery_name, gallery_id)
+        return redirect("/edit?g="+gallery_id)
+    else: 
+        return redirect("/")
+
+@app.route("/updatephoto", methods=["GET", "POST"])
+@login_required
+def updatephoto():
+    if request.method == "POST":
+        photo_name = request.form.get("photo_name")
+        photo_id = request.form.get("photo_id")
+        gallery_id = request.form.get("gallery_id")
+        db.execute("UPDATE photo SET photo_name = ? WHERE photo_id = ?", photo_name, photo_id)
+        return redirect("/edit?g="+gallery_id)
+    else: 
+        return redirect("/")
+
 @app.route("/upload", methods=["GET", "POST"])
 @login_required
 def upload():
