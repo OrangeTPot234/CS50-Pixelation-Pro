@@ -47,12 +47,11 @@ def insert_picture(picture_file, photo_name, gallery_id, user_id):
 def extract_pictures(search_id, query_type):
     gallery_photos = []
     if query_type == "gal":
-        photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", search_id)    
-        return gallery_photos
+        photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", search_id)
     elif query_type == "user":
         photo_info = db.execute("SELECT * FROM photos WHERE user_id = ?", search_id)
     else:
-        return none
+        return NONE
     for i in range(len(photo_info)):
         photo_names = {}
         blob = photo_info[i]['photo_file']
