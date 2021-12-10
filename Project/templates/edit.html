@@ -30,6 +30,6 @@
 {% for i in photos %}
 <img src="{{ i["path"] }}" alt="{{ i["name"] }}">
 <p>{{ i["name"] }}</p>
-<a href="/delete?i={{ i["photo_id"] }}&g={{ i["gallery_id"] }}&u={{ i["user_id"] }}"><button>Delete Photo</button></a>
+<a href="/delete?i={{ i["photo_id"] }}&g={{ galleries[0]["gallery_id"] }}&u={{ galleries[0]["user_id"] }}"><button>Delete Photo</button></a>
 {% endfor %}
 {% endblock %}

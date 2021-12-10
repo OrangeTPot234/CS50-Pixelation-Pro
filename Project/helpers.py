@@ -61,5 +61,6 @@ def extract_pictures(search_id, query_type):
         tf.write(blob)
         photo_names["name"] = f
         photo_names["path"] = filename
+        photo_names["photo_id"] = photo_info[i]['photo_id']
         gallery_photos.append(photo_names)
     return gallery_photos
