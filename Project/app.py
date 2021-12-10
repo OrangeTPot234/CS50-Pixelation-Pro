@@ -212,7 +212,7 @@ def extract_user_pictures(user_id):
     for i in range(len(photo_info)):
         blob = photo_info[i]['photo_file']
         f = photo_info[i]['photo_name']
-        filename = f + '.jpg'
+        filename = 'static/'+ f + '.jpg'
         #with open(filename, 'wb') as output_file:
             #output_file.write(blob)
         tf = open(filename, 'wb')
