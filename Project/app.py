@@ -220,8 +220,10 @@ def edit():
             return redirect("/gallery?g=" + gallery_id)
         photos = extract_pictures(gallery_id, "gal")
         return render_template("edit.html", galleries=gallery_info, photos=photos)
-    """elif request.method == "POST":
-        request.form.get
+    elif request.method == "POST":
+        gallery_name = request.form.get("gallery_name")
+        db.execute = 
+
         return render_template("edit.html", galleries=gallery_info)"""
 
 @app.route("/upload", methods=["GET", "POST"])

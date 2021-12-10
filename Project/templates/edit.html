@@ -7,7 +7,8 @@
 {% block main %}
 <h4> Gallery Name</h4>
 <form action="/search" method="get">
-    <input autocomplete="off" autofocus name="q" placeholder="{{ galleries[0]["gallery_name"] }}" type="search">
+    <label for="gallery_name">Change Gallery Name</label>
+    <input autocomplete="off" autofocus name="gallery_name" placeholder="{{ galleries[0]["gallery_name"] }}" type="search">
     <input type="submit" value="Search">
 </form>
 <br>
