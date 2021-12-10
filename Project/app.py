@@ -209,9 +209,9 @@ def gallery():
 def gallery():
     if request.method == "GET":
         search = request.args.get("q")
-        gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_name = ?", search) 
+        gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_name LIKE %?%", search) 
         photos = extract_pictures(gallery_id, "gal")
-        return render_template("search.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos)
+        return render_template("search.html", galleries=gallery_info)
 
 
 
