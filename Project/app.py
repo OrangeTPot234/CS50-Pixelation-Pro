@@ -229,6 +229,8 @@ def upgalnm():
         gallery_id = request.form.get("gallery_id")
         db.execute = ("UPDATE galleries SET gallery_name = ? WHERE gallery_id = ?", gallery_name, gallery_id)
         return redirect("/edit?g="+gallery_id)
+    else: 
+        return redirect("/")
 
 @app.route("/upload", methods=["GET", "POST"])
 @login_required
