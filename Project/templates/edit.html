@@ -30,12 +30,7 @@
 {% for i in photos %}
 <div>
 <img src="{{ i["path"] }}" alt="{{ i["name"] }}">
-<form action="/updatephoto" method="POST">
-    <input type="text" name="photo_name" placeholder="{{ i["name"] }}">
-    <input type="hidden" name="photo_id" value="{{ i["photo_id"] }}">
-    <input type="hidden" name="gallery_id" value="{{ galleries[0]["gallery_id"] }}">
-    <button type="submit" class="btn btn-primary">Update Photo Name</button>
-</form>
+<p>{{ i["name"] }}</p>
 <a href="/delete?i={{ i["photo_id"] }}&g={{ galleries[0]["gallery_id"] }}&u={{ galleries[0]["user_id"] }}"><button>Delete Photo</button></a>
 </div>
 {% endfor %}
