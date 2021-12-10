@@ -15,9 +15,9 @@
 <h4>{{ gallery_name }}</h4>
 <br>
 <h5>Photographs</h5>
-{% for i in photo_list %}
+{% for i in photos %}
 <img src="{{ i["path"] }}" alt="{{ i["name"] }}">
 <p>{{ i["name"] }}</p>
-<
+<a href="/delete?i={{ i["photo_id"] }}&g={{ i["gallery_id"] }}&u={{ i["user_id"] }}"><button>Delete Photo</button></a>
 {% endfor %}
 {% endblock %}
