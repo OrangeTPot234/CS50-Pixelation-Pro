@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block main %}
-<h4> Gallery Name</h4>
-<form action="/search" method="get">
-    <label for="gallery_name">Change Gallery Name</label>
+<h4>Gallery Name</h4>
+<form action="/edit" method="POST">
     <input autocomplete="off" autofocus name="gallery_name" placeholder="{{ galleries[0]["gallery_name"] }}" type="search">
-    <input type="submit" value="Search">
+    <input type="hidden" name="gallery_id" value="{{ galleries[0]["gallery_id"] }}">
+    <input type="submit" value="Update Gallery Name">
 </form>
 <br>
 <br>
@@ -25,12 +25,13 @@
     <button type="submit" class="btn btn-primary">Upload Gallery</button>
 </form>
 <br>
-<h4>{{ gallery_name }}</h4>
 <br>
 <h5>Photographs</h5>
 {% for i in photos %}
+<div>
 <img src="{{ i["path"] }}" alt="{{ i["name"] }}">
 <p>{{ i["name"] }}</p>
 <a href="/delete?i={{ i["photo_id"] }}&g={{ galleries[0]["gallery_id"] }}&u={{ galleries[0]["user_id"] }}"><button>Delete Photo</button></a>
+</div>
 {% endfor %}
 {% endblock %}

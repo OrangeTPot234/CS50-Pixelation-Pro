@@ -222,9 +222,10 @@ def edit():
         return render_template("edit.html", galleries=gallery_info, photos=photos)
     elif request.method == "POST":
         gallery_name = request.form.get("gallery_name")
-        db.execute = 
-
-        return render_template("edit.html", galleries=gallery_info)"""
+        gallery_id = gallery_id = request.form.get("gallery_id")
+        db.execute = ("UPDATE galleries SET gallery_name = ? WHERE gallery_id = ?", gallery_name, gallery_id)
+        gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id LIKE ?", gallery_id)
+        return render_template("edit.html", galleries=gallery_info)
 
 @app.route("/upload", methods=["GET", "POST"])
 @login_required
@@ -248,7 +249,7 @@ def delete():
         user_id = request.args.get("u")
         photo_id = request.args.get("i")
         if int(user_id) == int(session["user_id"]):
-            db.execute("DELETE FROM photos WHERE photo_id = ?", photo_id)
+            db.execute("DELETE FROM photos WHERE photo_id = ? AND gallery_id = ?", photo_id, gallery_id)
             return redirect("/edit?g=" + gallery_id)
         else:
             return redirect("/gallery?g=" + gallery_id)
