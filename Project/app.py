@@ -213,7 +213,7 @@ def search():
         print(gallery_info)
         return render_template("search.html", galleries=gallery_info)
 
-"""@app.route("/edit", methods=["GET", "POST"])
+@app.route("/edit", methods=["GET", "POST"])
 @login_required
 def edit():
     if request.method == "GET":
@@ -223,8 +223,8 @@ def edit():
             return redirect("/gallery?g=" + gallery_id)
         return render_template("edit.html", galleries=gallery_info)
     elif request.method == "POST":
-
-        return render_template("edit.html", galleries=gallery_info)"""
+        request.form.get
+        return render_template("edit.html", galleries=gallery_info)
 
 
 
