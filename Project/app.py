@@ -151,7 +151,7 @@ def index():
     galleries = db.execute("SELECT * FROM galleries WHERE user_id = ?", session["user_id"])
 
     if request.form.get("add_gallery"):
-        return redirect("/= "GET")
+        return redirect("/upload")
 
     # If user does not own any stocks load page with special note
     if not galleries:
@@ -242,13 +242,13 @@ def upload():
 @login_required
 def delete():
     if request.method == "GET":
-        gallery_id = request.form.get("gallery_id")
-        photo_name = request.form.get("photo_name")
-        f = request.files['photo']
-        f.save(secure_filename(f.filename))
-        insert_picture(f.filename.replace(" ", "_"), photo_name, gallery_id, session["user_id"])
-        os.remove(f.filename)
-        return redirect("/edit?g="+gallery_id)
+        gallery_id = request.args.get("g")
+        user_id = request.args.get("u")
+        photo_id = request.args.get("i")
+        if not user_id == session["user_id"]:
+            return redirect("/gallery?g=" + gallery_id)
+        db.execute("")
+        return redirect("/edit?g=" + gallery_id)
     else: 
         return redirect("/")
 
