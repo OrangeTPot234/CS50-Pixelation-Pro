@@ -9,6 +9,6 @@
 <br>
 <h5>Photographs</h5>
 {% for i in galleries %}
-<a href="{{ i["gallery_id"] }}"><button>{{ i["gallery_name"] }}</button>
+<a href="/gallery?g={{ i["gallery_id"] }}"><button>{{ i["gallery_name"] }} by {{ i["username"] }}</button>
 {% endfor %}
 {% endblock %}
