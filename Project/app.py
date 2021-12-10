@@ -220,9 +220,13 @@ def edit():
             return redirect("/gallery?g=" + gallery_id)
         photos = extract_pictures(gallery_id, "gal")
         return render_template("edit.html", galleries=gallery_info, photos=photos)
-    elif request.method == "POST":
+
+@app.route("/upgalnm", methods=["GET", "POST"])
+@login_required
+def upgalnm():
+    if request.method == "POST":
         gallery_name = request.form.get("gallery_name")
-        gallery_id = gallery_id = request.form.get("gallery_id")
+        gallery_id = request.form.get("gallery_id")
         db.execute = ("UPDATE galleries SET gallery_name = ? WHERE gallery_id = ?", gallery_name, gallery_id)
         gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id LIKE ?", gallery_id)
         return render_template("edit.html", galleries=gallery_info)
