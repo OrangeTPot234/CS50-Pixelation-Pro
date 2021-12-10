@@ -48,18 +48,29 @@ def extract_pictures(search_id, query_type):
     gallery_photos = []
     if query_type == "gal":
         photo_info = db.execute("SELECT * FROM photos WHERE gallery_id = ?", search_id)    
+        for i in range(len(photo_info)):
+            photo_names = {}
+            blob = photo_info[i]['photo_file']
+            f = photo_info[i]['photo_name']
+            filename = f + '.jpg'
+            tf = open(filename, 'wb')
+            tf.write(blob)
+            photo_names["name"] = f
+            photo_names["path"] = filename
+            gallery_photos.append(photo_names)
+        return gallery_photos
     elif query_type == "user":
         photo_info = db.execute("SELECT * FROM photos WHERE user_id = ?", search_id)
+                for i in range(len(photo_info)):
+            photo_names = {}
+            blob = photo_info[i]['photo_file']
+            f = photo_info[i]['photo_name']
+            filename = f + '.jpg'
+            tf = open(filename, 'wb')
+            tf.write(blob)
+            photo_names["name"] = f
+            photo_names["path"] = filename
+            gallery_photos.append(photo_names)
+        return gallery_photos
     else:
         return none
-    for i in range(len(photo_info)):
-        photo_names = {}
-        blob = photo_info[i]['photo_file']
-        f = photo_info[i]['photo_name']
-        filename = f + '.jpg'
-        tf = open(filename, 'wb')
-        tf.write(blob)
-        photo_names["name"] = f
-        photo_names["path"] = filename
-        gallery_photos.append(photo_names)
-    return gallery_photos
