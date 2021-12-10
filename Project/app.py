@@ -209,7 +209,7 @@ def gallery():
 def search():
     if request.method == "GET":
         search = request.args.get("q")
-        gallery_info = db.execute("SELECT * FROM galleries JOIN users ON users.user_id = galleries.user_id  WHERE gallery_name LIKE %?%", search)
+        gallery_info = db.execute("SELECT * FROM galleries JOIN users ON users.user_id = galleries.user_id  WHERE gallery_name LIKE '?%'", search)
         print(gallery_info)
         return render_template("search.html", galleries=gallery_info)
 
