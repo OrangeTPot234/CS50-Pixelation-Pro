@@ -247,11 +247,12 @@ def delete():
         user_id = request.args.get("u")
         photo_id = request.args.get("i")
         print(photo_id)
-        if user_id != session["user_id"]:
+        if user_id == session["user_id"]:
+            print("Passed user_id Check")
+            db.execute("DELETE FROM photos WHERE photo_id = ?", photo_id)
+            return redirect("/edit?g=" + gallery_id)
+        else:
             return redirect("/gallery?g=" + gallery_id)
-        print("Passed user_id Check")
-        db.execute("DELETE FROM photos WHERE photo_id = ?", photo_id)
-        return redirect("/edit?g=" + gallery_id)
     else: 
         return redirect("/")
 
