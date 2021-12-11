@@ -7,20 +7,24 @@
 {% block main %}
 <body>
         <form method="POST" enctype="multipart/form-data">
-            <label for="exampleFormControlTextarea1">Gallery Title</label>
+          <div>
+            <label for="exampleFormControlTextarea1"><b>GALLERY TITLE</b></label>
             <input type="text" id="exampleFormControlTextarea1" rows="1" name="gallery_title"></textarea>
             <br> 
             <br>
-            <label for="photo">Upload Image</label>
+            <label for="photo"><b>Upload Image</b></label>
             <input type="file" class="form-control-file" id="photo" name="photo" accept="image/jpeg">
             <br>
-            <label for="photo_name">Photo Name</label>
+            <br>
+            <label for="photo_name"><b>Photo Name</b></label>
             <input type="text" id="photo_name" name="photo_name">
             {% if session == 1 %}
             <p><i>Please upload a ".jpeg" image to start a new gallery</i></p>
             {% endif %}
             <br>
+            <br>
             <button type="submit" class="btn btn-primary">Upload Gallery</button>
+          </div>
         </form>
 </body>
 
