@@ -14,6 +14,10 @@
         <input autocomplete="off" autofocus name="q" placeholder="Search Galleries" type="search">
         <input type="submit" value="Search">
     </form>
+    <h6>Top Three Galleries</h6>
+    {% for i in top_sites %}
+    <a href="/gallery?g={{ i["gallery_id"] }}"><button>{{ }}</button></a>
+    {% endfor %}
     <br>
     <h5>My Galleries</h5>
     <div style="padding-left: 2em; padding-right: 2em;">

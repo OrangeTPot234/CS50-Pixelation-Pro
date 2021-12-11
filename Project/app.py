@@ -150,7 +150,7 @@ def index():
 
     galleries = db.execute("SELECT * FROM galleries WHERE user_id = ?", session["user_id"])
 
-    
+    top_sites = db.execute("SELECT * from galleries ORDER BY views DESC LIMIT 3")
 
     if request.form.get("add_gallery"):
         return redirect("/upload")
@@ -158,7 +158,7 @@ def index():
     # If user does not own any stocks load page with special note
     if not galleries:
         screenload = 0
-        return render_template("userpage.html", username=username, screenload=screenload)
+        return render_template("userpage.html", username=username, screenload=screenload, top_sites=top_sites)
 
     # load screen and load appropriate variables into HTML
     screenload = 1
