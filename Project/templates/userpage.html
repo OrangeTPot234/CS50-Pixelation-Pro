@@ -8,25 +8,29 @@ Homepage
     <h5>Search Other Galleries</h5>
     <form action="/search" method="get">
         <input autocomplete="off" autofocus name="q" placeholder="Search Galleries" type="search">
-        <input type="submit" value="Search">
+        <input type="submit" class="btn btn-outline-secondary" value="Search">
+        <form form action="/search" method="post">
+            <input type="submit" class="btn btn-outline-secondary" value="See All Galleries">
+        </form>
     </form>
+    
     <br>
     <h6>Top Three Galleries</h6>
     {% for i in top_sites %}
-    <a href="/gallery?g={{ i["gallery_id"] }}"><button class="btn btn-primary">{{ i["gallery_name"] }} by {{ i["username"] }}</button></a>
+    <a href="/gallery?g={{ i["gallery_id"] }}"><button class="btn btn-dark">{{ i["gallery_name"] }} by {{ i["username"] }}</button></a>
     {% endfor %}
     <br>
     <hr>
     <h4>Hello, {{ username }}</h4>
-    <a href="/newgallery"><button class="btn btn-primary">Add Gallery</button></a>
+    <a href="/newgallery"><button class="btn btn-warning">Add Gallery</button></a>
     <br>
     <br>
     <h5>My Galleries</h5>
-    <div style="padding-left: 2em; padding-right: 2em;">
+    <div>
         {% if screenload == 1 %}
         {% for i in galleries %}
-        <ul style="list-style-type:none;">
-            <li><a href="/gallery?g={{ i['gallery_id'] }}"><button class="btn btn-primary">{{ i["gallery_name"] }}</button></a></li>
+        <ul class="apple">
+            <li><a href="/gallery?g={{ i['gallery_id'] }}"><button class="btn btn-outline-dark">{{ i["gallery_name"] }}</button></a></li>
         </ul>
             {% endfor %}
         
