@@ -48,8 +48,8 @@
     </table>
     {% endif %}
     <form action="/submit" method="POST">
-        <label>Comment</label>
-        <textarea name="comment"></textarea>
+        <label class="form-floating mb-3">Comment</label>
+        <textarea class="form-floating mb-3" name="comment"></textarea>
         <input type="hidden" name="gallery_id" value="{{ gallery_id }}">
         <button type="submit" class="btn btn-outline-secondary" >Submit</button>
     </form>
