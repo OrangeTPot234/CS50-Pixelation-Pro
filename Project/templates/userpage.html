@@ -17,7 +17,7 @@ Homepage
     <br>
     <h6>Top Three Galleries</h6>
     {% for i in top_sites %}
-    <a href="/gallery?g={{ i["gallery_id"] }}"><button class="btn btn-primary">{{ i["gallery_name"] }} by {{ i["username"] }}</button></a>
+    <a href="/gallery?g={{ i["gallery_id"] }}"><button class="btn btn-dark">{{ i["gallery_name"] }} by {{ i["username"] }}</button></a>
     {% endfor %}
     <br>
     <hr>
@@ -30,7 +30,7 @@ Homepage
         {% if screenload == 1 %}
         {% for i in galleries %}
         <ul style="list-style-type:none;">
-            <li><a href="/gallery?g={{ i['gallery_id'] }}"><button class="btn btn-primary">{{ i["gallery_name"] }}</button></a></li>
+            <li><a href="/gallery?g={{ i['gallery_id'] }}"><button class="btn btn-outline-dark">{{ i["gallery_name"] }}</button></a></li>
         </ul>
             {% endfor %}
         
