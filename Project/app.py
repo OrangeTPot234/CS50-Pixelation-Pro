@@ -219,9 +219,9 @@ def search():
             flash("Invalid Search")
             return redirect("/")
         return render_template("search.html", galleries=gallery_info)
-    if request.method == "POST"
+    if request.method == "POST":
         gallery_info = db.execute("SELECT * FROM galleries JOIN users ON users.user_id = galleries.user_id")
-        
+        return render_template("search.html", galleries=gallery_info)
 
 @app.route("/edit", methods=["GET", "POST"])
 @login_required
