@@ -9,10 +9,11 @@ Homepage
     <form action="/search" method="get">
         <input autocomplete="off" autofocus name="q" placeholder="Search Galleries" type="search">
         <input type="submit" value="Search">
+        <form form action="/search" method="post">
+            <input type="submit" value="See All Galleries">
+        </form>
     </form>
-    <form form action="/search" method="post">
-        <input type="submit" value="See All Galleries">
-    </form>
+    
     <br>
     <h6>Top Three Galleries</h6>
     {% for i in top_sites %}
