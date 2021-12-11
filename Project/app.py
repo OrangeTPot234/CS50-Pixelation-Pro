@@ -169,7 +169,8 @@ def newgallery():
     if request.method == "POST":
         f = request.files['photo']
         if f.filename == '':
-            return
+            session = 1
+            return render_template("newgallery.html", session=session)
         gallery_title = request.form.get("gallery_title")
         db.execute("INSERT INTO galleries (user_id, gallery_name) VALUES (?, ?)", session["user_id"], gallery_title)
         gallery_id = db.execute("SELECT gallery_id FROM galleries WHERE user_id = ? AND gallery_name = ?", session["user_id"], gallery_title)[0]['gallery_id']

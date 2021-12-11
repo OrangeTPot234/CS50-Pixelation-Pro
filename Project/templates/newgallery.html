@@ -19,6 +19,9 @@
                 <input type="file" class="form-control-file" id="photo" name="photo">
                 <label for="photo_name">Photo Name</label>
                 <input type="text" class="form-control" id="photo_name" name="photo_name">
+                {% if session == 1 %}
+                <p><i>Please provide image to upload</i></p>
+                {% endif %}
             </div>
             <br>
             <div>
