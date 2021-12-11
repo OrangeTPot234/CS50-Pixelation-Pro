@@ -287,7 +287,7 @@ def upload():
         f = request.files['photo']
         if f.filename == '':
             flash('Please provide ".jpeg" file to upload')
-            return redirect("/edit?g="+gallery_id)
+            return redirect("/edit?g=" + gallery_id)
         f.save(secure_filename(f.filename))
         insert_picture(f.filename.replace(" ", "_"), photo_name, gallery_id, session["user_id"])
         os.remove(f.filename)

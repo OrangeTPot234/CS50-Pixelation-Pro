@@ -9,6 +9,8 @@ from functools import wraps
 # https://www.askpython.com/python-modules/flask/flask-file-uploading 
 # http://www.numericalexpert.com/blog/sqlite_blob_time/ 
 
+GALLERY_PHOTOS = []
+
 def apology(message, code=400):
     """Render message as an apology to user."""
     def escape(s):
