@@ -26,7 +26,10 @@
     <tbody>
         {% for i in comments %}
         <tr>
-        
+            <td>
+            {{ i["comment"] }}
+            <i>{{ i["timestamp"] }}</i>
+            </td>
         {% endfor %}
         </tr>
     </tbody>
