@@ -179,17 +179,9 @@ def newgallery():
     else:
         return render_template("newgallery.html")
 
-@app.route("/download", methods=["GET", "POST"])
-@login_required
-def download():
-    user_photos = db.execute("SELECT * FROM photos WHERE user_id = ?", session["user_id"])
-    user_name = db.execute("SELECT username FROM users WHERE user_id = ?", session["user_id"])
-    photographs = extract_pictures(session["user_id"], "user")
-    return render_template("download.html", user_name=user_name[0]["username"], photo_list=photographs)
-
 
 @app.route("/gallery", methods=["GET", "POST"])
-#@login_required
+@login_required
 def gallery():
     if request.method == "GET":
         gallery_id = request.args.get("g")
@@ -202,7 +194,7 @@ def gallery():
         return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos)
 
 @app.route("/search", methods=["GET", "POST"])
-#@login_required
+@login_required
 def search():
     if request.method == "GET":
         search = request.args.get("q")
