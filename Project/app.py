@@ -203,8 +203,8 @@ def gallery():
         counter = gallery_info[0]["views"] + 1
         db.execute("UPDATE galleries SET views = ? WHERE gallery_id = ?", counter, gallery_id) 
         photos = extract_pictures(gallery_id, "gal")
-        
-        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos)
+        comments = db.execute("SELECT * FROM comments WHERE gallery_id = ?",gallery_id)
+        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, comments=comments)
 
 @app.route("/search", methods=["GET", "POST"])
 @login_required
