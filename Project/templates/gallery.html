@@ -5,40 +5,40 @@
 {% endblock %}
 
 {% block main %}
-<form action="/search" method="get">
-    <input autocomplete="off" autofocus name="q" placeholder="Search Galleries" type="search">
-    <input type="submit" value="Search">
-</form>
-<br>
-<br>
-<h4>{{ gallery_name }}</h4>
-<br>
-<h5>Photographs</h5>
-{% for i in photo_list %}
-<img src="{{ i["path"] }}" alt="{{ i["name"] }}">
-<p>{{ i["name"] }}</p>
-{% endfor %}
-<br>
-<hr>
-<h5>Comment Section</h5>
-<table>
-    <tbody>
-        {% if session == 1 %}
-        {% for i in comments %}
-        <tr>
-            <td>
-            {{ i["comment"] }}
-            <i>{{ i["timestamp"] }}</i>
-            </td>
-        {% endfor %}
-        {% endif %}
-        </tr>
-    </tbody>
-</table>
-<from>
-    <label>Comment</label>
-    <textarea name="comment"></textarea>
-    <input type="hidden" name="gallery_id" value="{{ photo_list[0]["gallery_id"] }}">
-    <input type="submit" value="Submit">
-</from>
+    <form action="/search" method="get">
+        <input autocomplete="off" autofocus name="q" placeholder="Search Galleries" type="search">
+        <input type="submit" value="Search">
+    </form>
+    <br>
+    <br>
+    <h4>{{ gallery_name }}</h4>
+    <br>
+    <h5>Photographs</h5>
+    {% for i in photo_list %}
+    <img src="{{ i["path"] }}" alt="{{ i["name"] }}">
+    <p>{{ i["name"] }}</p>
+    {% endfor %}
+    <br>
+    <hr>
+    <h5>Comment Section</h5>
+    <table>
+        <tbody>
+            {% if session == 1 %}
+                {% for i in comments %}
+                <tr>
+                    <td>
+                    {{ i["comment"] }}
+                    <i>{{ i["timestamp"] }}</i>
+                    </td>
+                {% endfor %}
+            {% endif %}
+            </tr>
+        </tbody>
+    </table>
+    <from>
+        <label>Comment</label>
+        <textarea name="comment"></textarea>
+        <input type="hidden" name="gallery_id" value="{{ photo_list[0]["gallery_id"] }}">
+        <input type="submit" value="Submit">
+    </from>
 {% endblock %}
