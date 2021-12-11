@@ -58,7 +58,7 @@ def extract_pictures(search_id, query_type):
         photo_names = {}
         blob = photo_info[i]['photo_file']
         f = photo_info[i]['photo_name']
-        filename = 'static/' + f + '.jpg'
+        filename = 'static/photos/' + f + '.jpg'
         tf = open(filename, 'wb')
         tf.write(blob)
         photo_names["name"] = f
