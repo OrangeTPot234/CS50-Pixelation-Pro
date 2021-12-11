@@ -5,7 +5,7 @@ Homepage
 {% endblock %}
 
 {% block main %}
-    <h5>Search Other Galleries</h5>
+    <h5><b>Search Other Galleries</b></h5>
     <form action="/search" method="get">
         <input autocomplete="off" autofocus name="q" placeholder="Search Galleries" type="search">
         <input type="submit" class="btn btn-outline-secondary" value="Search">
@@ -13,7 +13,7 @@ Homepage
             <input type="submit" class="btn btn-outline-secondary" value="See All Galleries">
         </form>
     </form>
-    
+
     <br>
     <h6>Top Three Galleries</h6>
     {% for i in top_sites %}
@@ -33,7 +33,7 @@ Homepage
             <li><a href="/gallery?g={{ i['gallery_id'] }}"><button class="btn btn-outline-dark">{{ i["gallery_name"] }}</button></a></li>
         </ul>
             {% endfor %}
-        
+
         {% endif %}
     </div>
     {% if screenload == 0 %}
