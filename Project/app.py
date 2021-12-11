@@ -248,7 +248,7 @@ def updatephotos():
         photo_name = request.form.get("photo_name")
         photo_id = request.form.get("photo_id")
         gallery_id = request.form.get("gallery_id_2")
-        if photo_name == ' ':
+        if photo_name == " ":
             flash('Please provide new gallery title')
             return redirect("/edit?g=" + gallery_id)
         verify = db.execute("SELECT * from photos WHERE gallery_id = ? AND photo_name = ?", gallery_id, photo_name)
