@@ -189,7 +189,7 @@ def download():
 
 
 @app.route("/gallery", methods=["GET", "POST"])
-@login_required
+#@login_required
 def gallery():
     if request.method == "GET":
         gallery_id = request.args.get("g")
@@ -202,7 +202,7 @@ def gallery():
         return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos)
 
 @app.route("/search", methods=["GET", "POST"])
-@login_required
+#@login_required
 def search():
     if request.method == "GET":
         search = request.args.get("q")
