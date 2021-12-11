@@ -27,8 +27,17 @@ Homepage
     <a href="/newgallery"><button class="btn btn-warning">Add Gallery</button></a>
     <br>
     <br>
-    <h5>zProfile Info</h5>
-
+    <h5>Profile Info</h5>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+    <label for="photo">Upload Image</label>
+    <input type="file" class="form-control-file" id="photo" name="photo" accept="image/jpeg">
+    <br>
+    <br>
+    <label for="photo_name">Photo Name</label>
+    <input type="text" id="photo_name" name="photo_name">
+    <input type="hidden" name="gallery_id" value="{{ galleries[0]["gallery_id"] }}">
+    <button type="submit" class="btn btn-secondary">Upload Photo</button>
+    </form>
     <h5>My Galleries</h5>
     <div>
         {% if screenload == 1 %}
