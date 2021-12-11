@@ -150,7 +150,7 @@ def index():
 
     galleries = db.execute("SELECT * FROM galleries WHERE user_id = ?", session["user_id"])
 
-    top_sites = db.execute("SELECT * from galleries ORDER BY views DESC LIMIT 3")
+    top_sites = db.execute("SELECT * from galleries JOIN users ON users.user_id = galleries.user_id ORDER BY views DESC LIMIT 3")
 
     if request.form.get("add_gallery"):
         return redirect("/upload")
@@ -162,7 +162,7 @@ def index():
 
     # load screen and load appropriate variables into HTML
     screenload = 1
-    return render_template("userpage.html", username=username, galleries=galleries, screenload=screenload)
+    return render_template("userpage.html", username=username, galleries=galleries, screenload=screenload, top_sites=top_sites)
 
 
 @app.route("/newgallery", methods=["GET", "POST"])
