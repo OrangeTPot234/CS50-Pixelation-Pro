@@ -6,30 +6,22 @@
 
 {% block main %}
 <body>
-    <main class="container-fluid py-5 text-center">
         <form method="POST" enctype="multipart/form-data">
-          <div class="form-row">
-              <div>
-                <label for="exampleFormControlTextarea1">Gallery Title</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="gallery_title"></textarea>
-              </div>
-            <br>  
-            <div>
-                <label for="photo">Upload Image</label>
-                <input type="file" class="form-control-file" id="photo" name="photo" accept="image/jpeg">
-                <label for="photo_name">Photo Name</label>
-                <input type="text" class="form-control" id="photo_name" name="photo_name">
-                {% if session == 1 %}
-                <p><i>Please upload jpeg images to start new gallery</i></p>
-                {% endif %}
-            </div>
+            <label for="exampleFormControlTextarea1">Gallery Title</label>
+            <input type="text" id="exampleFormControlTextarea1" rows="1" name="gallery_title"></textarea>
+            <br> 
             <br>
-            <div>
-              <button type="submit" class="btn btn-primary">Upload Gallery</button>
-            </div>
-          </div>
+            <label for="photo">Upload Image</label>
+            <input type="file" class="form-control-file" id="photo" name="photo" accept="image/jpeg">
+            <br>
+            <label for="photo_name">Photo Name</label>
+            <input type="text" id="photo_name" name="photo_name">
+            {% if session == 1 %}
+            <p><i>Please upload a ".jpeg" image to start a new gallery</i></p>
+            {% endif %}
+            <br>
+            <button type="submit" class="btn btn-primary">Upload Gallery</button>
         </form>
-    </main>
 </body>
 
 {% endblock %}
