@@ -172,6 +172,10 @@ def newgallery():
             session = 1
             return render_template("newgallery.html", session=session)
         gallery_title = request.form.get("gallery_title")
+        verify = db.execute("SELECT * from galleries WHERE gallery_name = ? AND user_id = ?", gallery_title, session["user_id"])
+        if len(verify) >= 1:
+            session = 2
+            return render_template("newgallery.html", session=session)
         db.execute("INSERT INTO galleries (user_id, gallery_name) VALUES (?, ?)", session["user_id"], gallery_title)
         gallery_id = db.execute("SELECT gallery_id FROM galleries WHERE user_id = ? AND gallery_name = ?", session["user_id"], gallery_title)[0]['gallery_id']
         photo_name = request.form.get("photo_name")

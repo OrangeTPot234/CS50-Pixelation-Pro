@@ -10,16 +10,17 @@
           <div>
             <label for="exampleFormControlTextarea1"><b>GALLERY TITLE</b></label>
             <input type="text" id="exampleFormControlTextarea1" rows="1" name="gallery_title"></textarea>
+            {% if session == 2 %}
+            <p><i>Gallery Title already in use</i></p>
+            {% endif %}
             <br> 
             <br>
-            <div style="float: center; margin:em;">
-                <label for="photo"><b>Upload Image</b></label>
-                <input type="file" class="form-control-file" id="photo" name="photo" accept="image/jpeg">
-                <br>
-                <br>
-                <label for="photo_name"><b>Photo Name</b></label>
-                <input type="text" id="photo_name" name="photo_name">
-            </div>
+            <label for="photo"><b>Upload Image</b></label>
+            <input type="file" class="form-control-file" id="photo" name="photo" accept="image/jpeg">
+            <br>
+            <br>
+            <label for="photo_name"><b>Photo Name</b></label>
+            <input type="text" id="photo_name" name="photo_name">
             {% if session == 1 %}
             <p><i>Please upload a ".jpeg" image to start a new gallery</i></p>
             {% endif %}
