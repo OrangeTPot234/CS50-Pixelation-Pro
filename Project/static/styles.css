@@ -7,16 +7,16 @@ img{
     max-height: 3000px;
     margin: 0.5em;
   }
-.apple { 
+.apple {
   list-style-type:none;
-  text-align: center; 
+  text-align: center;
   margin-left: -2em;
   }
 
 h4{
-
+  font-family: Monaco;
 }
 
 h5{
-  
+  font-family: Monaco;
 }
