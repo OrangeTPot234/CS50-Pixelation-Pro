@@ -22,14 +22,14 @@ Homepage
     <br>
     <hr>
     <h4>Hello, {{ username }}</h4>
-    <a href="/newgallery"><button class="btn btn-primary">Add Gallery</button></a>
+    <a href="/newgallery"><button class="btn btn-warning">Add Gallery</button></a>
     <br>
     <br>
     <h5>My Galleries</h5>
     <div>
         {% if screenload == 1 %}
         {% for i in galleries %}
-        <ul style="list-style-type:none;">
+        <ul class="apple">
             <li><a href="/gallery?g={{ i['gallery_id'] }}"><button class="btn btn-outline-dark">{{ i["gallery_name"] }}</button></a></li>
         </ul>
             {% endfor %}

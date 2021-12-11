@@ -7,3 +7,8 @@ img{
     max-height: 3000px;
     margin: 0.5em;
   }
+.apple { 
+  list-style-type:none;
+  text-align: center; 
+  margin-left: -2em;
+  }
