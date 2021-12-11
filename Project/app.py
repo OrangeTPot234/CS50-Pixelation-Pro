@@ -234,7 +234,7 @@ def upgalnm():
     if request.method == "POST":
         gallery_name = request.form.get("gallery_name")
         gallery_id = request.form.get("gallery_id")
-        if not gallery_name or gallery_name = " ":
+        if not gallery_name or gallery_name == " ":
             flash('Please provide new gallery title')
             return redirect("/edit?g=" + gallery_id)
         verify = db.execute("SELECT * from galleries WHERE gallery_name = ? AND user_id = ?", gallery_name, session["user_id"])
@@ -253,7 +253,7 @@ def updatephotos():
         photo_name = request.form.get("photo_name")
         photo_id = request.form.get("photo_id")
         gallery_id = request.form.get("gallery_id_2")
-        if not photo_name or photo_name = " ":
+        if not photo_name or photo_name == " ":
             flash('Please provide photo title')
             return redirect("/edit?g=" + gallery_id)
         verify = db.execute("SELECT * from photos WHERE gallery_id = ? AND photo_name = ?", gallery_id, photo_name)
@@ -280,7 +280,7 @@ def upload():
     if request.method == "POST":
         gallery_id = request.form.get("gallery_id")
         photo_name = request.form.get("photo_name")
-        if not photo_name or photo_name = " ":
+        if not photo_name or photo_name == " ":
             flash("Please provide new photo name before uploading")
             return redirect("/edit?g="+gallery_id)
         verify = db.execute("SELECT * from photos WHERE gallery_id = ? AND photo_name = ?", gallery_id, photo_name)
@@ -304,10 +304,10 @@ def submit():
     if request.method == "POST":
         gallery_id = request.form.get("gallery_id")
         comment = request.form.get("comment")
-        if not comment or comment = " ":
+        if not comment or comment == " ":
             flash("Invalid Comment Entry")
             return redirect("/edit?g="+gallery_id)
-        db.execute("INSERT ")
+        db.execute("INSERT INTO comments (comment, gallery_id), VALUES (?, ?)", comment, gallery_id)
         return redirect("/edit?g="+gallery_id)
     else: 
         return redirect("/")

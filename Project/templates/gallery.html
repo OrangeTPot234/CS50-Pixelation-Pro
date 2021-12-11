@@ -18,12 +18,12 @@
 <img src="{{ i["path"] }}" alt="{{ i["name"] }}">
 <p>{{ i["name"] }}</p>
 {% endfor %}
-{% endblock %}
 <br>
 <hr>
 <h5>Comment Section</h5>
 <table>
     <tbody>
+        {% if session == 1 %}
         {% for i in comments %}
         <tr>
             <td>
@@ -31,6 +31,7 @@
             <i>{{ i["timestamp"] }}</i>
             </td>
         {% endfor %}
+        {% endif %}
         </tr>
     </tbody>
 </table>
@@ -40,3 +41,4 @@
     <input type="hidden" name="gallery_id" value="{{ photo_list[0]["gallery_id"] }}">
     <input type="submit" value="Submit">
 </from>
+{% endblock %}
