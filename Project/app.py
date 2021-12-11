@@ -229,7 +229,7 @@ def upgalnm():
     if request.method == "POST":
         gallery_name = request.form.get("gallery_name")
         gallery_id = request.form.get("gallery_id")
-        if gallery_name == ' ':
+        if not gallery_name:
             flash('Please provide new gallery title')
             return redirect("/edit?g=" + gallery_id)
         verify = db.execute("SELECT * from galleries WHERE gallery_name = ? AND user_id = ?", gallery_name, session["user_id"])
@@ -248,8 +248,8 @@ def updatephotos():
         photo_name = request.form.get("photo_name")
         photo_id = request.form.get("photo_id")
         gallery_id = request.form.get("gallery_id_2")
-        if photo_name == " ":
-            flash('Please provide new gallery title')
+        if not photo_name:
+            flash('Please provide photo title')
             return redirect("/edit?g=" + gallery_id)
         verify = db.execute("SELECT * from photos WHERE gallery_id = ? AND photo_name = ?", gallery_id, photo_name)
         if len(verify) >=1:
@@ -275,6 +275,13 @@ def upload():
     if request.method == "POST":
         gallery_id = request.form.get("gallery_id")
         photo_name = request.form.get("photo_name")
+        if not photo_name:
+            flash("Please provide new photo name before uploading")
+            return redirect("/edit?g="+gallery_id)
+        verify = db.execute("SELECT * from photos WHERE gallery_id = ? AND photo_name = ?", gallery_id, photo_name)
+        if len(verify) >=1:
+            flash('Photo name already in use in this gallery')
+            return redirect("/edit?g=" + gallery_id)
         f = request.files['photo']
         f.save(secure_filename(f.filename))
         insert_picture(f.filename.replace(" ", "_"), photo_name, gallery_id, session["user_id"])
