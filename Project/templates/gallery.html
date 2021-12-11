@@ -23,15 +23,15 @@
     <hr>
     <h5>Comment Section</h5>
     {% if state == 1 %}
-    <table >
+    <table class="table">
         <tbody> 
+            {% for i in comments %}
             <tr>
-                {% for i in comments %}
-                    <td>
-                    {{ i["comment"] }}
-                    <i>{{ i["timestamp"] }}</i>
-                    </td>
-                {% endfor %}
+                <td>
+                {{ i["comment"] }}
+                <i>{{ i["timestamp"] }}</i>
+                </td>
+            {% endfor %}
             </tr>
         </tbody>
     </table>
