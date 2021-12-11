@@ -150,6 +150,8 @@ def index():
 
     galleries = db.execute("SELECT * FROM galleries WHERE user_id = ?", session["user_id"])
 
+    
+
     if request.form.get("add_gallery"):
         return redirect("/upload")
 
