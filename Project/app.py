@@ -205,8 +205,8 @@ def gallery():
         photos = extract_pictures(gallery_id, "gal")
         comments = db.execute("SELECT * FROM comments WHERE gallery_id = ? ORDER BY timestamp", gallery_id)
         if len(comments) <= 0:
-            return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=0)
-        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=1, comments=comments)
+            return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=0, gallery_id=gallery_id)
+        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=1, comments=comments, gallery_id=gallery_id)
 
 @app.route("/search", methods=["GET", "POST"])
 @login_required
@@ -306,10 +306,10 @@ def submit():
     if request.method == "POST":
         gallery_id = request.form.get("gallery_id")
         comment = request.form.get("comment")
-        if not comment or comment == " ":
+        if not comment:
             flash("Invalid Comment Entry")
             return redirect("/edit?g="+gallery_id)
-        db.execute("INSERT INTO comments (comment, gallery_id), VALUES (?, ?)", comment, gallery_id)
+        db.execute("INSERT INTO comments (comment, gallery_id) VALUES (?, ?)", comment, gallery_id)
         return redirect("/edit?g="+gallery_id)
     else: 
         return redirect("/")
