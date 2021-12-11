@@ -205,8 +205,8 @@ def gallery():
         photos = extract_pictures(gallery_id, "gal")
         comments = db.execute("SELECT * FROM comments WHERE gallery_id = ? ORDER BY timestamp", gallery_id)
         if len(comments) <= 0:
-            return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, session=0)
-        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, session=1, comments=comments)
+            return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=0)
+        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=1, comments=comments)
 
 @app.route("/search", methods=["GET", "POST"])
 @login_required
