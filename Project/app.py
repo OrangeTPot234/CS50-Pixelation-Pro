@@ -168,7 +168,8 @@ def index():
 def newgallery():
     if request.method == "POST":
         f = request.files['photo']
-        if 
+        if f.filename == '':
+            return
         gallery_title = request.form.get("gallery_title")
         db.execute("INSERT INTO galleries (user_id, gallery_name) VALUES (?, ?)", session["user_id"], gallery_title)
         gallery_id = db.execute("SELECT gallery_id FROM galleries WHERE user_id = ? AND gallery_name = ?", session["user_id"], gallery_title)[0]['gallery_id']
@@ -176,7 +177,7 @@ def newgallery():
         f.save(secure_filename(f.filename))
         insert_picture(f.filename.replace(" ", "_"), photo_name, gallery_id, session["user_id"])
         os.remove(f.filename)
-        return redirect("/download")
+        return redirect("/edit?g="+gallery_id)
     else:
         return render_template("newgallery.html")
 
