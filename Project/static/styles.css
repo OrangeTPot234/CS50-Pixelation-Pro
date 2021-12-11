@@ -1,0 +1,9 @@
+img{
+    border-style: solid;
+    border-width: 1em;
+    border-color: white;
+    background-size: contain;
+    max-width: 1000px;
+    max-height: 3000px;
+    margin: 0.5em;
+  }
