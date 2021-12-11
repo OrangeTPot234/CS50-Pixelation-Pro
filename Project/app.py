@@ -204,9 +204,10 @@ def gallery():
         db.execute("UPDATE galleries SET views = ? WHERE gallery_id = ?", counter, gallery_id) 
         photos = extract_pictures(gallery_id, "gal")
         comments = db.execute("SELECT * FROM comments WHERE gallery_id = ? ORDER BY timestamp", gallery_id)
+        top_sites = db.execute("SELECT * from galleries JOIN users ON users.user_id = galleries.user_id ORDER BY views DESC LIMIT 3")
         if len(comments) <= 0:
-            return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=0, gallery_id=gallery_id)
-        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=1, comments=comments, gallery_id=gallery_id)
+            return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=0, gallery_id=gallery_id, top_sites=top_sites)
+        return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=1, comments=comments, gallery_id=gallery_id, top_sites=top_sites)
 
 @app.route("/search", methods=["GET", "POST"])
 @login_required

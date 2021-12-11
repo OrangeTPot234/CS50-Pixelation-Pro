@@ -13,7 +13,7 @@ Homepage
     <br>
     <h6>Top Three Galleries</h6>
     {% for i in top_sites %}
-    <a href="/gallery?g={{ i["gallery_id"] }}"><button>{{ i["gallery_name"] }} by {{ i["username"] }}</button></a>
+    <a href="/gallery?g={{ i["gallery_id"] }}"><button class="btn btn-primary">{{ i["gallery_name"] }} by {{ i["username"] }}</button></a>
     {% endfor %}
     <br>
     <hr>

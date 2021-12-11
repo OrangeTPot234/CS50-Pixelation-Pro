@@ -6,11 +6,18 @@
 
 {% block main %}
 <body>
+    <h5>Search Other Galleries</h5>
     <form action="/search" method="get">
         <input autocomplete="off" autofocus name="q" placeholder="Search Galleries" type="search">
         <input type="submit" value="Search">
     </form>
     <br>
+    <h6>Top Three Galleries</h6>
+    {% for i in top_sites %}
+    <a href="/gallery?g={{ i["gallery_id"] }}"><button class="btn btn-primary">{{ i["gallery_name"] }} by {{ i["username"] }}</button></a>
+    {% endfor %}
+    <br>
+    <hr>
     <br>
     <h4>{{ gallery_name }}</h4>
     <br>
