@@ -7,10 +7,10 @@ The overarching purpose of the project was to provide a unique way for artists t
 
 This project, as a result, tries to provide a way for artists to set up digital galleries where they can upload images of their work to be shared, as well as provide a way to view, search, and comment on other galleries.
 
-We chose to use python and flask as this provided the most complete set of tools to create a to consistently upload, save data, and recreate web pages.
+We chose to use python and flask as this provided the most complete set of tools to create a consistent experience.
 
 ## Implementing Login and Registration Page:
-The log in pages and registration pages were executed as similarly done in Week 9 with finance. However, we made a slight change of using “flash()” to show error messages instead of the apology page. This is because using “flash” and reloading the webpage allowed the user to easily re-enter their credentials instead of having to navigate back to the login/registration pages, which creates a tedious and clunky user experience. We wanted all users to log in to use the site as a way to make sure only registered users are viewing pages.
+The login pages and registration pages were executed as similarly done in Week 9 with finance. However, we made a slight change of using “flash()” to show error messages instead of the apology page. This is because using “flash” and reloading the webpage allowed the user to easily re-enter their credentials instead of having to navigate back to the login/registration pages, which creates a tedious and clunky user experience. We wanted all users to log in to use the site as a way to make sure only registered users are viewing pages.
 
 ## Implementing Userpage
 Upon logging in, the users are taken to the userpage. This userpage was designed to be a central hub for the user, providing a place to search the website for other galleries. We designed the webpage to give a message if no galleries have been created yet to give feedback to the user. If the user has previously created galleries, we set up the page to load all of their galleries as buttons that they can press to go to the corresponding edit page. We also provided a button to create a new gallery. A final, interesting feature is the ability to upload a profile picture and bio (both of which must be submitted together for the information to be uploaded properly), so that other users can read more about the artist when visiting the gallery.
