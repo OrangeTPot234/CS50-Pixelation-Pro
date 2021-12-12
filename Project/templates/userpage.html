@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block main %}
+     <!-- Search bar and top galleries -->
+    <h5>Search Other Galleries</h5>
+    <form action="/search" method="get" >
+        <input autocomplete="off" autofocus name="q" placeholder="Search Galleries" type="search">
+        <input type="submit" class="btn btn-outline-secondary" value="Search">
+        <input type="submit" class="btn btn-outline-secondary" value="See All Galleries" formaction="/search" formmethod="post">
+    </form>
+    <br>
+    <br>
+    <h6>Three Most Viewed Galleries</h6>
+    {% for i in top_sites %}
+    <a href="/gallery?g={{ i["gallery_id"] }}"><button class="btn btn-dark">{{ i["gallery_name"] }} by {{ i["username"] }}</button></a>
+    {% endfor %}
+    <br>
+    <hr>
+    <br>
+    <br>
+    <!-- Greeting Section -->
+    <h4>Hello, {{ username }}</h4>
+    <a href="/newgallery"><button class="btn btn-warning">Add Gallery</button></a>
+    <br>
+    <br>
+    <!-- Upload profile information -->
+    <h5>Profile Info</h5>
+    <form action="/uploadprofile" method="POST" enctype="multipart/form-data">
+        <h7><b>Upload Profile Photo: </b></h7><input type="file" class="form-control-file" id="profile_pic" name="profile_pic" value="Upload Profile Photo"accept="image/jpeg">
+        <br>
+        <br>
+        <label for="profile_info"><b>Bio: </b></label>
+        <input autocomplete="off" type="text" name="profile_info">
+        <br>
+        <br>
+        <button type="submit" class="btn btn-secondary">Upload Profile Info</button>
+    </form>
+    <br>
+    <br>
+    <!-- My galleries section -->
+    <h5>My Galleries</h5>
+    <div>
+        {% if screenload == 1 %}
+        {% for i in galleries %}
+        <ul class="apple">
+            <li><a href="/gallery?g={{ i['gallery_id'] }}"><button class="btn btn-outline-dark">{{ i["gallery_name"] }}</button></a></li>
+        </ul>
+            {% endfor %}
+
+        {% endif %}
+    </div>
+    {% if screenload == 0 %}
+    <br>
+    <h5><i>No Galleries at Moment</i></h5>
+    {% endif %}
+{% endblock %}

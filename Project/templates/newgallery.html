@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add New Gallery
+{% endblock %}
+
+{% block main %}
+<body>
+  <!-- Form to make new gallery -->
+        <form method="POST" enctype="multipart/form-data">
+          <div>
+            <!-- Input gallery name -->
+            <label for="exampleFormControlTextarea1"><b>GALLERY TITLE</b></label>
+            <input type="text" autocomplete="off" id="exampleFormControlTextarea1" rows="1" name="gallery_title"></textarea>
+            {% if session == 2 %}
+            <!-- Error message -->
+            <p><i>Gallery Title already in use</i></p>
+            {% endif %}
+            <br>
+            <br>
+            <!-- Input images (only jpegs) -->
+            <label for="photo"><b>Upload Image</b></label>
+            <input type="file" autocomplete="off" class="form-control-file" id="photo" name="photo" accept="image/jpeg">
+            <br>
+            <br>
+            <!-- Input photo name -->
+            <label for="photo_name"><b>Photo Name</b></label>
+            <input type="text" autocomplete="off" id="photo_name" name="photo_name">
+            {% if session == 1 %}
+            <!-- Error message -->
+            <p><i>Please upload a ".jpeg" image to start a new gallery</i></p>
+            {% endif %}
+            {% if session == 3 %}
+            <p><i>Please provide a photo name</i></p>
+            {% endif %}
+            <br>
+            <br>
+            <button type="submit" class="btn btn-warning">Upload Gallery</button>
+          </div>
+        </form>
+</body>
+
+{% endblock %}
