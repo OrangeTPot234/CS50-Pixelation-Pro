@@ -17,7 +17,7 @@ Welcome to Pixelation PRO. Pixelation PRO is a social platform (similar to insta
 ## HOW IT WORKS:
 
 ## LOG IN AND REGISTRATION
-The initial page that appears through the website link is a login page. If the user does not have a previous account, the user must first register for an account with a unique username. This can be done by pressing the “Register” button found at the top-right of the webpage (on the navbar). Then after successful registration, the user is directed to their homepage.
+The initial page that appears through the website link is the login page. If the user does not have a previous account, the user must first register for an account with a unique username. This can be done by pressing the “Register” button found at the top-right of the webpage (on the navbar). Then after successful registration, the user is directed to their homepage.
 
 ## NAVIGATION
 The top of the webpage is the navigation bar. After successful login, users have the option to Log out from their session (“Log Out” button) and go to the homepage (press either the “Pixelation Pro” logo or “My Galleries” button).
