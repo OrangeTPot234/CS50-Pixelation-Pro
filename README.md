@@ -31,15 +31,15 @@ Users can customize their profiles by updating their bios and profile picture. T
 On the homepage, there is a search bar (search bar under "Search Other Galleries") to view other galleries by typing in the target gallery's title. Or, if there is no specfic target gallery in mind, the user can view the top 3 most viewed galleries (found under "Three Most Viewed Galleries" at top of page) or press the "See All Galleries" button to view all galleries on Pixelation PRO's database. If the user views a gallery and is interested in more work by the same artist, users can scroll down to the bottom of the specific gallery page and click the link of the artist's name (username is underlined) to look at all galleries by that artist.
 
 ### VIEWING OWN GALLERY
-The list of all of the user’s own galleries are found at the very bottom of the homepage, under “My Galleries”. Click the button of the user's gallery to edit the specific gallery.
+The list of all of the user’s own galleries are found at the very bottom of the homepage, under “My Galleries”. Click the button of the gallery to edit that specific gallery.
 
 ### CREATING GALLERIES
-After successful registration and login, the user can create galleries by choosing a collection of photos to go into each gallery. The user can create a new gallery by pressing the yellow “Add Gallery” button on the homepage, which leads to the edit page. On the edit page, the user must input the desired “Gallery Title”, upload a photo to go into that gallery, as well as a title for that photo. There will be a user error if more than one photos in the same gallery have the exact same name (case sensitive). Additionally, there will be a user error if more than one gallery from the same user have the same name (case sensitive).
+After successful registration and login, the user can create galleries (a collection of photots) on their profile. The user can create a new gallery by pressing the yellow “Add Gallery” button on the homepage, which leads to the edit page. On the edit page, the user must input the desired “Gallery Title”, upload a photo to go into that gallery, as well as a title for that photo. There will be a user error if more than one photos in the same gallery have the exact same name (case sensitive). Additionally, there will be a user error if more than one gallery from the same user have the same name (case sensitive).
 
 ### EDITING GALLERIES
-After initial creation of the gallery, the user can make further edits to the gallery by viewing their own gallery page (Refer to #VIEWING OWN GALLERY) where the user will have the options: Add more photos, delete photos, rename the gallery, or delete entire galleries.
+After initial creation of the gallery, the user can make edits to the gallery by clicking on their gallery (Refer to #VIEWING OWN GALLERY) where the user will have the options: Add more photos, delete photos, rename the gallery, or delete entire galleries.
 
 ### COMMENTING
-Users can leave comments on galleries by scrolling to the bottom of the gallery page to the comment section. The comments will be anonymous and posted with a timestamp for all viewers of the gallery to see.
+Users can leave comments on others' and their own galleries by scrolling to the bottom of the gallery page to the comment section. The comments will be anonymous and posted with a timestamp for all viewers of the gallery to see.
 
 # VIDEO LINK:
