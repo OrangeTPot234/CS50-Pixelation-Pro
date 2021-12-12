@@ -1,16 +1,20 @@
 # PIXELATION PRO by Judith Chang and Tony Potchernikov
-# Decemember 12, 2021
+# December 12, 2021
 # User Guide
 
 ## SETTING UP & RUNNING PROGRAM
-1) download the zip file (titled "project.zip")
-2) open the zip file on device
-3) log unto codespace (or oter environment that can run FLASK)
-4) Upload file unto CodeSpace
-5) Make sure you are in the same directory as all of the files that oyu just uploaded
-6) Run FLASK ("flask run") in terminal
-7) be prompted to view the webpage
+1) Download the zip file (titled "project.zip")
+2) Open the zip file on device (laptop, etc.)
+3) Log unto codespace (or other environment that can run FLASK)
+4) Upload downloaded file unto CodeSpace
+5) Make sure you are in the same directory as all of the files that you just uploaded
+6) Run FLASK in terminal (by typing "flask run")
+7) You should then be prompted to view the webpage as a link should show up on the terminal
 
+## OVERVIEW:
+Welcome to Pixelation PRO. Pixelation PRO is a social platform (similar to instagram) for artists to share their art as well as view other artists’ works.
+
+## USER GUIDE:
 
 ## LOG IN AND REGISTRATION
 The first page that appears when the website link is a login page. A user must first register for an account with a unique username. This can be done by pressing the “Register” button at the top-right of the webpage (on the navbar). Then after successful registration, the user is directed to their homepage.
