@@ -1,11 +1,15 @@
 # PIXELATION PRO by Judith Chang and Tony Potchernikov
-# December 12, 2021
+# Decemember 12, 2021
 # User Guide
 
-## SETTING UP
-
-
-## RUNNING PROGRAM
+## SETTING UP & RUNNING PROGRAM
+1) download the zip file (titled "project.zip")
+2) open the zip file on device
+3) log unto codespace (or oter environment that can run FLASK)
+4) Upload file unto CodeSpace
+5) Make sure you are in the same directory as all of the files that oyu just uploaded
+6) Run FLASK ("flask run") in terminal
+7) be prompted to view the webpage
 
 
 ## LOG IN AND REGISTRATION
