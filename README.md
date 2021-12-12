@@ -4,10 +4,10 @@
 
 ## SETTING UP & RUNNING PROGRAM
 1) Download the zip file (titled "project.zip")
-2) Open the zip file on the device (laptop, etc.)
+2) Open the zip file on device (laptop, etc.)
 3) Log unto codespace (or other environment that can run FLASK)
-4) Upload downloaded file unto CodeSpace
-5) Make sure you are in the same directory as all of the files that you just uploaded
+4) Upload downloaded file unto CodeSpace (or other environment)
+5) Make sure you are in the same directory as all of the files that you just uploaded from "project.zip"
 6) Run FLASK in terminal (by typing "flask run")
 7) You should then be prompted to view the webpage as a link should show up on the terminal
 
