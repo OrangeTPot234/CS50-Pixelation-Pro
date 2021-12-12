@@ -17,7 +17,7 @@ The top of the webpage is the navigation bar. After successful login, users have
 
 ## FUNCTIONS ON HOMEPAGE:
 ### SEARCHING GALLERIES
-Users can use the search bar to view other galleries (Under "Search Other Galleries") by typing in the gallery title. Or the user can see the top 3 most viewed galleries at the top of the homepage. If interested in more work by the same artist, users can click the link of the artist's name to look at all galleries made by that artist. The link to the user’s own galleries are found at the very bottom of the homepage, under “My Galleries”.
+Users can use the search bar to view other galleries (Under "Search Other Galleries") by typing in the gallery title. Or the user can see the top 3 most viewed galleries at the top of the homepage. If interested in more work by the same artist when viewing a gallery, users can scroll down to the bottom of the gallery page and click the link of the artist's name to look at all galleries made by that artist. The link to the user’s own galleries are found at the very bottom of the homepage, under “My Galleries”.
 
 ### USER PROFILE
 Users can customize their profiles by updating their bios and profile pictures. Options found at bottom of homepage. This information will be displayed at the bottom of all of the artist’s galleries, and will be available to the public and anyone viewing the galleries.
