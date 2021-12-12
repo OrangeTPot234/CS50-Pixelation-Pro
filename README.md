@@ -2,6 +2,9 @@
 # December 12, 2021
 # User Guide
 
+# VIDEO LINK:
+https://www.youtube.com/watch?v=IqUZvMd37FE
+
 ## SETTING UP & RUNNING PROGRAM
 1) Download the zip file (titled "project.zip")
 2) Open the zip file on device (laptop, etc.)
@@ -41,8 +44,5 @@ After initial creation of the gallery, the user can make edits to the gallery by
 
 ### COMMENTING
 Users can leave comments on others' and their own galleries by scrolling to the bottom of the gallery page to the comment section. The comments will be anonymous and posted with a timestamp for all viewers of the gallery to see.
-
-# VIDEO LINK:
-
 
 ## Troubleshooting: Due to the large size of the files and database involved, sometimes the page will stall and it is necessary to reload the webpage, or to reinitiate flask run (or reopen the provided flask run link)
