@@ -23,9 +23,6 @@ Session(app)
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///databases.db")
 
-#GALLERY_PHOTOS = []
-#USER_PHOTOS = []
-
 @app.after_request
 def after_request(response):
     """Ensure responses aren't cached"""
@@ -116,7 +113,7 @@ def register():
         # Temporarily save username and password for entry into database
         input1 = request.form.get("username")
         input2 = generate_password_hash(request.form.get("password"))
-        
+
         # save username and password into database
         db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", input1, input2)
 
@@ -228,12 +225,12 @@ def gallery():
 
         # else, load page and increase views count by one
         counter = gallery_info[0]["views"] + 1
-        db.execute("UPDATE galleries SET views = ? WHERE gallery_id = ?", counter, gallery_id) 
-        
+        db.execute("UPDATE galleries SET views = ? WHERE gallery_id = ?", counter, gallery_id)
+
         # Extract photos from database
         photos = extract_pictures(gallery_id, "gal")
 
-        # Retrieve comments from database 
+        # Retrieve comments from database
         comments = db.execute("SELECT * FROM comments WHERE gallery_id = ? ORDER BY timestamp", gallery_id)
 
         # Retrieve most visited galleries to go with search bar
@@ -248,11 +245,11 @@ def gallery():
                 return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=0, gallery_id=gallery_id, top_sites=top_sites, gallery_creator=profile_data[0]["username"])
             # Otherwise load page with comments
             return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=1, comments=comments, gallery_id=gallery_id, top_sites=top_sites, gallery_creator=profile_data[0]["username"])
-        
+
         # Extract profile photo and save bio to variable
         profile_pic = extract_profile_pic(profile_data[0]["profile_pic"])
         profile_info = profile_data[0]["profile_info"]
-        
+
         # If no comments are on page yet, load page without comments table but with bio/profile pic
         if len(comments) <= 0:
                 return render_template("gallery.html", gallery_name=gallery_info[0]['gallery_name'], photo_list=photos, state=0, gallery_id=gallery_id, top_sites=top_sites, profile_pic=profile_pic, profile_info=profile_info, gallery_creator=profile_data[0]["username"], profile_check = 1)
@@ -273,7 +270,7 @@ def search():
         artist = request.args.get("a")
         # Query databse for top searched galleries to load on page/with search bar
         top_sites = db.execute("SELECT * from galleries JOIN users ON users.user_id = galleries.user_id ORDER BY views DESC LIMIT 3")
-        
+
         # If user tries to force a GET request with both artist and gallery query through URL:
         if artist and search:
             # search database for galleries based on gallery names and artist name
@@ -304,7 +301,7 @@ def search():
                 return redirect("/")
             # Load search page with search results
             return render_template("search.html", galleries=gallery_info,top_sites=top_sites)
-        
+
         # Return error if other type of GET quest is attempted
         else:
             flash("Invalid Search")
@@ -330,17 +327,17 @@ def edit():
         # Obtain gallery_ID from get request and retrieve gallery info from database
         gallery_id = request.args.get("g")
         gallery_info = db.execute("SELECT * FROM galleries WHERE gallery_id = ?", gallery_id)
-        
+
         # If user attempting to access edit page is not creator, redirect to gallery page
         if gallery_info[0]['user_id'] != session["user_id"]:
             return redirect("/gallery?g=" + gallery_id)
 
         # Extract photos from database to load on edit page
         photos = extract_pictures(gallery_id, "gal")
-        
+
         # Retrieve comments from database
         comments = db.execute("SELECT * FROM comments WHERE gallery_id = ? ORDER BY timestamp", gallery_id)
-        
+
         # If no comments, load page without comments section
         if len(comments) <= 0:
             return render_template("edit.html", galleries=gallery_info, photos=photos)
@@ -364,7 +361,7 @@ def upgalnm():
         if not gallery_name or gallery_name == " ":
             flash('Please provide new gallery title')
             return redirect("/edit?g=" + gallery_id)
-        
+
         # Ensure gallery name not previosuly used by user
         verify = db.execute("SELECT * from galleries WHERE gallery_name = ? AND user_id = ?", gallery_name, session["user_id"])
         # if gallery name already used by user, flash error and reload page
@@ -388,22 +385,22 @@ def updatephotos():
         photo_name = request.form.get("photo_name")
         photo_id = request.form.get("photo_id")
         gallery_id = request.form.get("gallery_id_2")
-        
+
         # if photo name is not provided, flash error and reload page
         if not photo_name or photo_name == " ":
             flash('Please provide photo title')
             return redirect("/edit?g=" + gallery_id)
-        
+
         # if photo name is already used in gallery, flash error and reload page
         verify = db.execute("SELECT * from photos WHERE gallery_id = ? AND photo_name = ?", gallery_id, photo_name)
         if len(verify) >=1:
             flash('Photo name already in use in this gallery')
             return redirect("/edit?g=" + gallery_id)
-        
+
         # Update photo name and reload edit page
         db.execute("UPDATE photos SET photo_name = ? WHERE photo_id = ?", photo_name, photo_id)
         return redirect("/edit?g=" + gallery_id)
-    else: 
+    else:
         return redirect("/")
 
 
@@ -433,7 +430,7 @@ def upload():
         gallery_id = request.form.get("gallery_id")
         photo_name = request.form.get("photo_name")
         f = request.files['photo']
-        
+
         # If photo name is not provided flash error and reload
         if not photo_name or photo_name == " ":
             flash("Please provide new photo name before uploading")
@@ -458,7 +455,7 @@ def upload():
         # Provide confirmation that photo uploaded and reload page
         flash("Photo Successfully Uploaded")
         return redirect("/edit?g="+gallery_id)
-    else: 
+    else:
         return redirect("/")
 
 @app.route("/uploadprofile", methods=["GET", "POST"])
@@ -470,7 +467,7 @@ def uploadprofile():
         # Get user_id
         user_id = session["user_id"]
 
-        # Pass profile info from form 
+        # Pass profile info from form
         profile_info = request.form.get("profile_info")
         f = request.files['profile_pic']
 
@@ -493,11 +490,11 @@ def uploadprofile():
             db.execute("UPDATE users SET profile_pic = ?, profile_info = ? WHERE user_id = ?", blob, profile_info, user_id)
         # delete from codespace
         os.remove(f.filename)
-        
+
         # Flash confirmation and reload
         flash("Profile Info Uploaded")
         return redirect("/")
-    else: 
+    else:
         return redirect("/")
 
 @app.route("/submit", methods=["GET", "POST"])
@@ -517,7 +514,7 @@ def submit():
         # Otherwise insert comment into comment table
         db.execute("INSERT INTO comments (comment, gallery_id) VALUES (?, ?)", comment, gallery_id)
         return redirect("/edit?g="+gallery_id)
-    else: 
+    else:
         return redirect("/")
 
 @app.route("/delete", methods=["GET", "POST"])
@@ -533,7 +530,7 @@ def delete():
         db.execute("DELETE FROM photos WHERE photo_id = ? AND gallery_id = ?", photo_id, gallery_id)
         # redirect back to page
         return redirect("/edit?g=" + gallery_id)
-    else: 
+    else:
         return redirect("/")
 
 #### ERROR HANDLING ####

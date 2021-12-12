@@ -21,7 +21,7 @@ The top of the webpage is the navigation bar. After successful login, users have
 Users can customize their profiles by updating their bios and profile pictures. These options are found at bottom of homepage under "Profile Info". User Profile Information will be displayed at the bottom of each of the user’s galleries, and will be available to the public and anyone viewing the galleries.
 
 ### SEARCHING GALLERIES
-Users can use the search bar to view other galleries (Under "Search Other Galleries") by typing in the gallery title. Or the user can see the top 3 most viewed galleries at the top of the homepage. If the user views a gallery and is interested in more work by the same artist, users can scroll down to the bottom of the specific gallery page and click the link of the artist's name (username is underlined) to look at all galleries made by that artist.
+Users can use the search bar to view other galleries (search bar under "Search Other Galleries") by typing in the target gallery title. Or, if there is no specfic target gallery in mind, the user can view the top 3 most viewed galleries (at the top of the homepage) or press the "See All Galleries" button to view all galleries on the Pixelation Pro's database. If the user views a gallery and is interested in more work by the same artist, users can scroll down to the bottom of the specific gallery page and click the link of the artist's name (username is underlined) to look at all galleries made by that artist.
 
 ### VIEWING OWN GALLERY
 The link to the user’s own galleries are found at the very bottom of the homepage, under “My Galleries”.
