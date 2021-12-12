@@ -15,11 +15,17 @@ The top of the webpage is the navigation bar. After successful login, users have
 
 
 ## FUNCTIONS ON HOMEPAGE:
-### VIEWING GALLERIES
-Users can search others’ art through the username or gallery name of the works as well as see the top 3 most viewed galleries at the top of the homepage. The link to the user’s own galleries are found at the very bottom of the homepage, under “My Galleries”.
+### SEARCHING GALLERIES
+Users can use the 
+Users can search others’ art by using the searchbar for the title of the specified gallery the works as well as see the top 3 most viewed galleries at the top of the homepage. The link to the user’s own galleries are found at the very bottom of the homepage, under “My Galleries”.
 
 ### USER PROFILE
 Users can customize their profiles by updating their bios and profile pictures. Options found at bottom of homepage. This information will be displayed at the bottom of all of the artist’s galleries, and will be available to the public and anyone viewing the galleries.
 
 ### CREATING GALLERIES
 After successful registration and login, the user can create galleries by choosing a collection of photos to go into each gallery. The user can do this by pressing the yellow “Create Gallery” button on the homepage, which leads to the edit page. On the edit page, the user must input the desired “Gallery Title”,  a desired photo to go into that gallery, as well as a title for that photo. There will be a user error if two photos in the same gallery have the exact same name (case sensitive). There will be a user error if galleries from the same user have the same name (case sensitive). After creation of the gallery (by pressing “Upload Gallery”), the user will be redirected to the edit page where the user can make further edits such as: Add more photos, delete photos, rename the gallery, or delete entire galleries.
+
+### COMMENTING
+Users can leave comments on galleries by scrolling to the bottom of the gallery page to the comment section. The comments will be anonymous and posted with a timestamp for all viewers of the gallery to see.
+
+# VIDEO LINK:
